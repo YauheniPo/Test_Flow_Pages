@@ -1,6 +1,6 @@
-package flow_pages.pages;
+package com.flow.app.pages;
 
-import flow_pages.BasePage;
+import com.flow.framework.BasePage;
 
 public class PageA extends BasePage {
 

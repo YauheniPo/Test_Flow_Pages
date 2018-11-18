@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="flowpage" parallel="tests" thread-count="10">
+    <test verbose="2" name="page" group-by-instances="true">
+        <classes>
+            <class name="com.flow.app.tests.TestPage"/>
+        </classes>
+    </test>
+</suite>

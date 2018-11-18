@@ -1,4 +1,4 @@
-package flow_pages;
+package com.flow.framework;
 
 import org.testng.Assert;
 

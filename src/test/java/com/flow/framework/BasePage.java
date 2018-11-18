@@ -1,7 +1,7 @@
-package flow_pages;
+package com.flow.framework;
 
-import flow_pages.pages.PageA;
-import flow_pages.pages.PageB;
+import com.flow.app.pages.PageA;
+import com.flow.app.pages.PageB;
 
 public class BasePage extends BaseEntity {
 

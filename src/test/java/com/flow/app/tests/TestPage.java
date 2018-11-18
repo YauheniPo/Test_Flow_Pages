@@ -1,8 +1,8 @@
-package flow_pages.tests;
+package com.flow.app.tests;
 
-import flow_pages.BaseTest;
-import flow_pages.pages.PageA;
-import flow_pages.pages.PageB;
+import com.flow.app.pages.PageA;
+import com.flow.app.pages.PageB;
+import com.flow.framework.BaseTest;
 import org.testng.annotations.Test;
 
 public class TestPage extends BaseTest {
