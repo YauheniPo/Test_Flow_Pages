@@ -8,6 +8,7 @@
     <artifactId>flow-page</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
+    <name>flow-page</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -21,6 +22,11 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>6.14.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pcj</groupId>
+            <artifactId>google-options</artifactId>
+            <version>1.0.0</version>
         </dependency>
     </dependencies>
 
@@ -67,6 +73,7 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <finalName>${project.artifactId}-${version}</finalName>
                     <archive>
                         <manifest>
                             <mainClass>com.flow.Runner</mainClass>
