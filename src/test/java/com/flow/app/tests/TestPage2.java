@@ -3,9 +3,17 @@ package com.flow.app.tests;
 import com.flow.app.pages.PageA;
 import com.flow.app.pages.PageB;
 import com.flow.framework.BaseTest;
+import lombok.extern.log4j.Log4j2;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+@Log4j2
 public class TestPage2 extends BaseTest {
+
+    @BeforeMethod
+    public void beforeMethod() {
+        log.info(this.getClass().getName());
+    }
 
     @Test
     public void test() {

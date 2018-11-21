@@ -1,15 +1,18 @@
 package com.flow.framework.utils;
 
-import com.google.devtools.common.options.Option;
-import com.google.devtools.common.options.OptionsBase;
+import picocli.CommandLine;
 
 import java.util.List;
+import java.util.Map;
 
-public class Options extends OptionsBase {
+public class Options {
 
-    @Option(name = "testng_xml", defaultValue = "null")
-    public String testngXml;
+    @CommandLine.Option(names = {"--xml"}, description = "TestNG xml")
+    public List<String> testngXml;
 
-    @Option(name = "test_classes", defaultValue = "null", allowMultiple = true)
+    @CommandLine.Option(names = {"--cl"}, description = "TestNG Classes")
     public List<String> testClasses;
+
+    @CommandLine.Option(names = {"--pr"}, description = "TestNG Parameters")
+    public Map<String, String> parameters;
 }
