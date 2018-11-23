@@ -1,7 +1,9 @@
-package com.flow.app.pages;
+package com.flow.app.page;
 
-import com.flow.framework.BasePage;
+import com.flow.framework.entity.BasePage;
+import lombok.extern.log4j.Log4j2;
 
+@Log4j2
 public class Window<R extends BasePage> extends BasePage {
 
     private R page;
@@ -11,12 +13,12 @@ public class Window<R extends BasePage> extends BasePage {
     }
 
     public Window methodWindow() {
-        System.out.println("method Window");
+        log.info("method Window");
         return this;
     }
 
     public R methodWindowToPage() {
-        System.out.println(String.format("method Window to %s", this.page.getClass().getSimpleName()));
+        log.info(String.format("method Window to %s", this.page.getClass().getSimpleName()));
         return this.page;
     }
 }

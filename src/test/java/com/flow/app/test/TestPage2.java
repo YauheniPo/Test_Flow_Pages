@@ -1,13 +1,15 @@
-package com.flow.app.tests;
+package com.flow.app.test;
 
-import com.flow.app.pages.PageA;
-import com.flow.app.pages.PageB;
-import com.flow.framework.BaseTest;
+import com.flow.app.page.PageA;
+import com.flow.app.page.PageB;
+import com.flow.framework.entity.BaseTest;
+import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.Test;
 
+@Log4j2
 public class TestPage2 extends BaseTest {
 
-    @Test
+    @Test(groups = {"page", "TestPage2"})
     public void test() {
         PageA pageA = new PageA()
                 .methodPageA()
