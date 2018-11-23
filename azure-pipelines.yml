@@ -10,7 +10,7 @@ jobs:
     vmImage: 'Ubuntu 16.04'
   steps:
     displayName: "Page Flow"
-    - task: Maven@1
+    - task: Maven@0
       displayName: "Maven Package"
       inputs:
         mavenPomFile: 'pom.xml'
@@ -22,6 +22,6 @@ jobs:
         testResultsFiles: '**/TEST-*.xml'
         goals: 'clean -DskipTests=true package'
 
-    - task: ls@1
+    - task: ls@0
       displayName: "ls"
     - script: ls
