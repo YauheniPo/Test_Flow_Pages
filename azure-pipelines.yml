@@ -3,17 +3,25 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
-pool:
-  vmImage: 'Ubuntu 16.04'
 
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    goals: 'clean -DskipTests=true package'
+jobs:
+- job: page-flow
+  pool:
+    vmImage: 'Ubuntu 16.04'
+  steps:
+    displayName: "Page Flow"
+    - task: Maven@1
+      displayName: "Maven Package"
+      inputs:
+        mavenPomFile: 'pom.xml'
+        mavenOptions: '-Xmx3072m'
+        javaHomeOption: 'JDKVersion'
+        jdkVersionOption: '1.8'
+        jdkArchitectureOption: 'x64'
+        publishJUnitResults: false
+        testResultsFiles: '**/TEST-*.xml'
+        goals: 'clean -DskipTests=true package'
+
+    - task: ls@1
+      displayName: "ls"
+    - script: ls

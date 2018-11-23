@@ -18,7 +18,6 @@
         <lombok.version>1.18.2</lombok.version>
         <github.global.server>github</github.global.server>
         <java.version>1.8</java.version>
-        <github.global.server>github</github.global.server>
     </properties>
 
     <repositories>
