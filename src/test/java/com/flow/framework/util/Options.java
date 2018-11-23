@@ -1,4 +1,4 @@
-package com.flow.framework.utils;
+package com.flow.framework.util;
 
 import picocli.CommandLine;
 

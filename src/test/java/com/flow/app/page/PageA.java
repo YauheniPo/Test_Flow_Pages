@@ -1,6 +1,6 @@
-package com.flow.app.pages;
+package com.flow.app.page;
 
-import com.flow.framework.BasePage;
+import com.flow.framework.entity.BasePage;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
