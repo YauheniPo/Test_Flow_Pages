@@ -5,22 +5,37 @@
 
 
 jobs:
-- job: page-flow
+- job: PopoTestPageFlow
   pool:
+#    vmImage: 'vs2017-win2016'
     vmImage: 'Ubuntu 16.04'
-  steps:
-    displayName: "Page Flow"
-    - task: Maven@3
-      displayName: "Maven Package"
-      inputs:
-        mavenPomFile: 'pom.xml'
-        mavenOptions: '-Xmx3072m'
-        javaHomeOption: 'JDKVersion'
-        jdkVersionOption: '1.8'
-        jdkArchitectureOption: 'x64'
-        publishJUnitResults: false
-        testResultsFiles: '**/TEST-*.xml'
-        goals: 'clean -DskipTests=true package'
 
-    - script: echa ls
-    - script: ls
+  steps:
+  - script: ls
+    displayName: ls command
+  - task: Maven@3
+    displayName: Maven Package
+    inputs:
+      mavenPomFile: 'pom.xml'
+      mavenOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '1.8'
+      jdkArchitectureOption: 'x64'
+      publishJUnitResults: false
+      goals: 'clean -DskipTests=true package'
+
+  - script: ls
+    displayName: ls command
+  - script: ls build/
+    displayName: ls 'build' foler command
+  - script: java -jar build/flow-page-tests.jar --xml testng.xml --cl TestPage --cl TestPage2 --pr=name=asas
+    displayName: java -jar
+  - script: ls build/
+    displayName: ls 'build' foler command
+
+#  - task: PublishBuildArtifacts@1
+#    displayName: Publish Build Artifacts
+#    inputs:
+#      PathtoPublish: '$(System.DefaultWorkingDirectory)'
+#      name: 'drop'
+
