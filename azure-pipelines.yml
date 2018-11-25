@@ -7,8 +7,8 @@
 jobs:
 - job: PopoTestPageFlow
   pool:
-#    vmImage: 'vs2017-win2016'
-    vmImage: 'Ubuntu 16.04'
+    vmImage: 'vs2017-win2016'
+#    vmImage: 'Ubuntu 16.04'
 
   steps:
   - script: ls
@@ -28,10 +28,12 @@ jobs:
     displayName: ls command
   - script: ls build/
     displayName: ls 'build' foler command
-  - script: java -jar build/flow-page-tests.jar --xml testng.xml --cl TestPage --cl TestPage2 --pr=name=asas
+  - script: java -jar build/flow-page-tests.jar --xml testng.xml --cl TestPage --pr=name=JAR
     displayName: java -jar
   - script: ls build/
     displayName: ls 'build' foler command
+  - script: echo ${testng.xml}
+
 
 #  - task: PublishBuildArtifacts@1
 #    displayName: Publish Build Artifacts

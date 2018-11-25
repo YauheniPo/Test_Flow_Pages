@@ -32,9 +32,9 @@ public class Runner {
         try {
             if (!(Objects.requireNonNull(options).testngXml == null)) {
                 for (String xml : options.testngXml) {
-                    InputStream xmlRunnerReader = Objects.requireNonNull(Runner.class.getClassLoader().getResource(xml)).openStream();
-                    suites.add((new Parser(xmlRunnerReader)).parse().stream().findFirst().get());
-
+                    try (InputStream xmlRunnerReader = Objects.requireNonNull(Runner.class.getClassLoader().getResource(xml)).openStream()) {
+                        suites.add((new Parser(xmlRunnerReader)).parse().stream().findFirst().get());
+                    }
 //                    suites.add((new Parser(URLDecoder.decode(getSystemResource(xml).getPath(), "UTF-8"))).parse().stream().findFirst().get());
 //
 //                    suites.add((new Parser(Paths.get("target", "test-classes", xml).toString()).parse()).stream().findFirst().get());
