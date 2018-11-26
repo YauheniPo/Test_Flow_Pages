@@ -12,6 +12,7 @@ import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 import picocli.CommandLine;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class Runner {
     private static final String TESTS_SOURCE = "com.flow.app.test";
 
     @TrackTime
+    //groups
     public static void main(String[] args) {
         Options options = CommandLine.populateCommand(new Options(), args);
 
@@ -34,6 +36,8 @@ public class Runner {
                 for (String xml : options.testngXml) {
                     try (InputStream xmlRunnerReader = Objects.requireNonNull(Runner.class.getClassLoader().getResource(xml)).openStream()) {
                         suites.add((new Parser(xmlRunnerReader)).parse().stream().findFirst().get());
+                    } catch (IOException ex) {
+                        log.error("Error for TestNG xml files", ex);
                     }
 //                    suites.add((new Parser(URLDecoder.decode(getSystemResource(xml).getPath(), "UTF-8"))).parse().stream().findFirst().get());
 //

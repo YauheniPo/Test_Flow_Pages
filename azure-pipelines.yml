@@ -32,7 +32,10 @@ jobs:
     displayName: java -jar
   - script: ls build/
     displayName: ls 'build' foler command
-  - script: echo ${testng.xml}
+  - script: echo ${Build.testng.xml}
+  - script: echo ${build.testng.xml}
+  - script: echo ${Agent.OS}
+  - script: echo ${Build.ArtifactStagingDirectoryd}
 
 
 #  - task: PublishBuildArtifacts@1
