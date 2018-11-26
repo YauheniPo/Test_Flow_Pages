@@ -36,6 +36,8 @@ jobs:
   - script: echo ${build.testng.xml}
   - script: echo ${Agent.OS}
   - script: echo ${Build.ArtifactStagingDirectoryd}
+    displayName: Variables
+
 
 
 #  - task: PublishBuildArtifacts@1
