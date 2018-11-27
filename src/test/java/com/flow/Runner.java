@@ -2,7 +2,6 @@ package com.flow;
 
 import com.flow.framework.listener.TestListener;
 import com.flow.framework.util.Options;
-import epam.popovich.annotation.time.TrackTime;
 import lombok.extern.log4j.Log4j2;
 import org.testng.ITestNGListener;
 import org.testng.TestNG;
@@ -23,7 +22,6 @@ public class Runner {
 
     private static final String TESTS_SOURCE = "com.flow.app.test";
 
-    @TrackTime
     //groups
     public static void main(String[] args) {
         Options options = CommandLine.populateCommand(new Options(), args);
@@ -40,7 +38,6 @@ public class Runner {
                         log.error("Error for TestNG xml files", ex);
                     }
 //                    suites.add((new Parser(URLDecoder.decode(getSystemResource(xml).getPath(), "UTF-8"))).parse().stream().findFirst().get());
-//
 //                    suites.add((new Parser(Paths.get("target", "test-classes", xml).toString()).parse()).stream().findFirst().get());
                 }
             }
@@ -65,6 +62,7 @@ public class Runner {
 //            List<XmlInclude> includes = new ArrayList<>();
 //            includes.add(testLogin);
 //            xmlClass.setIncludedMethods(includes);
+
             myTest.setXmlClasses(classes); //testNG.setTestClasses(new Class[] { TestPage.class });
 
 //            List<XmlTest> myTests = new ArrayList<>();
