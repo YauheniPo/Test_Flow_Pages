@@ -11,12 +11,6 @@ jobs:
 #    vmImage: 'Ubuntu 16.04'
 
   steps:
-  - script: echo ${Build.testng.xml}
-  - script: echo ${build.testng.xml}
-  - script: echo ${Agent.OS}
-  - script: echo ${Build.ArtifactStagingDirectoryd}
-    displayName: Variables
-
   - script: ls
     displayName: ls command
   - task: Maven@3
