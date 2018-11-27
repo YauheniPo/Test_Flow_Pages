@@ -30,7 +30,7 @@
         <dependency>
             <groupId>epam.popovich.annotation</groupId>
             <artifactId>track-time</artifactId>
-            <version>1.3.RELEASE</version>
+            <version>1.4.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.testng</groupId>
@@ -83,7 +83,7 @@
                         <path>
                             <groupId>epam.popovich.annotation</groupId>
                             <artifactId>track-time</artifactId>
-                            <version>1.3.RELEASE</version>
+                            <version>1.4.RELEASE</version>
                         </path>
                     </annotationProcessorPaths>
                     <showWarnings>true</showWarnings>
