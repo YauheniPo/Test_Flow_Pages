@@ -7,8 +7,8 @@
 jobs:
 - job: PopoTestPageFlow
   pool:
-    vmImage: 'vs2017-win2016'
-#    vmImage: 'Ubuntu 16.04'
+#    vmImage: 'vs2017-win2016'
+    vmImage: 'Ubuntu 16.04'
 
   steps:
   - script: ls
@@ -32,6 +32,7 @@ jobs:
     displayName: java -jar
   - script: ls build/
     displayName: ls 'build' foler command
+  - script: ls
 
 #  - task: PublishBuildArtifacts@1
 #    displayName: Publish Build Artifacts

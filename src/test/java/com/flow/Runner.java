@@ -5,24 +5,22 @@ import com.flow.framework.util.Options;
 import lombok.extern.log4j.Log4j2;
 import org.testng.ITestNGListener;
 import org.testng.TestNG;
-import org.testng.xml.Parser;
-import org.testng.xml.XmlClass;
-import org.testng.xml.XmlSuite;
-import org.testng.xml.XmlTest;
+import org.testng.xml.*;
 import picocli.CommandLine;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Log4j2
 public class Runner {
 
     private static final String TESTS_SOURCE = "com.flow.app.test";
 
-    //groups
     public static void main(String[] args) {
         Options options = CommandLine.populateCommand(new Options(), args);
 
@@ -30,7 +28,7 @@ public class Runner {
         TestNG testNG = new TestNG();
 
         try {
-            if (!(Objects.requireNonNull(options).testngXml == null)) {
+            if (Objects.requireNonNull(options).testngXml != null) {
                 for (String xml : options.testngXml) {
                     try (InputStream xmlRunnerReader = Objects.requireNonNull(Runner.class.getClassLoader().getResource(xml)).openStream()) {
                         suites.add((new Parser(xmlRunnerReader)).parse().stream().findFirst().get());
@@ -45,15 +43,14 @@ public class Runner {
             XmlSuite suite = new XmlSuite();
             suite.setParallel(XmlSuite.ParallelMode.TESTS);
 
-
             XmlTest myTest = new XmlTest(suite);
-            if (!(options.parameters == null)) {
+            if (options.parameters != null) {
                 suite.setParameters(options.parameters);
             }
 
             List<XmlClass> classes = new ArrayList<> ();
 
-            if (!(options.testClasses == null)) {
+            if (options.testClasses != null) {
                 for (String cl : options.testClasses) {
                     classes.add(new XmlClass(String.format("%s.%s", TESTS_SOURCE, cl)));
                 }
@@ -62,6 +59,24 @@ public class Runner {
 //            List<XmlInclude> includes = new ArrayList<>();
 //            includes.add(testLogin);
 //            xmlClass.setIncludedMethods(includes);
+
+            if (options.testGroups != null) {
+                for (String gr : options.testGroups) {
+                    myTest.addIncludedGroup(gr);
+                }
+                List<XmlPackage> xmlPackages = new ArrayList<>();
+                XmlPackage xmlPackage = new XmlPackage();
+                if (options.testPackages != null) {
+                    xmlPackage.setName(options.testPackages.toString());
+                    xmlPackage.setInclude(options.testPackages.stream().map(
+                            (pack) -> String.format("%s.*", pack)).collect(Collectors.toList()));
+                } else {
+                    xmlPackage.setName(String.format("%s.*", TESTS_SOURCE));
+                    xmlPackage.setInclude(Collections.singletonList(TESTS_SOURCE));
+                }
+                xmlPackages.add(xmlPackage);
+                myTest.setPackages(xmlPackages);
+            }
 
             myTest.setXmlClasses(classes); //testNG.setTestClasses(new Class[] { TestPage.class });
 
