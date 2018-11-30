@@ -13,6 +13,12 @@ public class Options {
     @CommandLine.Option(names = {"--cl"}, description = "TestNG Classes")
     public List<String> testClasses;
 
+    @CommandLine.Option(names = {"--gr"}, description = "TestNG Groups")
+    public List<String> testGroups;
+
+    @CommandLine.Option(names = {"--pack"}, description = "TestNG Packages")
+    public List<String> testPackages;
+
     @CommandLine.Option(names = {"--pr"}, description = "TestNG Parameters")
     public Map<String, String> parameters;
 }
