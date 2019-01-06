@@ -41,6 +41,9 @@ public final class Browser {
 
     private static void initBrowserProperties() {
         Configuration.timeout = TIMEOUT;
+
+        Configuration.headless = true;
+
         DriverManager.setUp(currentBrowser);
     }
 
