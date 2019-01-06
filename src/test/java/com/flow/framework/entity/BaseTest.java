@@ -1,6 +1,6 @@
 package com.flow.framework.entity;
 
-import com.flow.framework.AssertDelegator;
+import com.flow.framework.AssertHelper;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
@@ -13,7 +13,7 @@ import java.util.Arrays;
 @Log4j2
 public class BaseTest extends BaseEntity {
 
-    protected AssertDelegator assertHelper = new AssertDelegator();
+    protected AssertHelper assertHelper = new AssertHelper();
 
     @Parameters({"name"})
     @BeforeMethod

@@ -13,7 +13,7 @@ public class PageB extends BasePage {
         return this;
     }
 
-    public Window<PageB> methodPageBtoWindow() {
+    public Window<PageB> methodPageBToWindow() {
         log.info("method PageB to Window");
         return new Window<>(this);
     }

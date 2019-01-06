@@ -18,7 +18,7 @@ public class TestPage2 extends BaseTest {
                 .methodWindowToPage()
                 .getPageB()
                 .methodPageB()
-                .methodPageBtoWindow()
+                .methodPageBToWindow()
                 .methodWindow()
                 .methodWindowToPage()
                 .getPageA();
