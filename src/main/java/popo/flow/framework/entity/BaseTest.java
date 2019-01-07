@@ -1,11 +1,11 @@
-package com.flow.framework.entity;
+package popo.flow.framework.entity;
 
-import com.flow.framework.AssertHelper;
 import lombok.extern.log4j.Log4j2;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
+import popo.flow.framework.AssertHelper;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;

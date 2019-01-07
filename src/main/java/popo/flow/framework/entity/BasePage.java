@@ -1,9 +1,8 @@
-package com.flow.framework.entity;
+package popo.flow.framework.entity;
 
-import com.flow.app.page.PageA;
-import com.flow.app.page.PageB;
-import com.flow.framework.entity.BaseEntity;
 import lombok.extern.log4j.Log4j2;
+import popo.flow.app.page.PageA;
+import popo.flow.app.page.PageB;
 
 @Log4j2
 public class BasePage extends BaseEntity {

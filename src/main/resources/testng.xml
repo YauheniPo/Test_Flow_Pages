@@ -3,7 +3,7 @@
 <suite name="flow_page" parallel="tests" thread-count="10">
     <test verbose="2" name="page" group-by-instances="true">
         <classes>
-            <class name="com.flow.app.test.TestPage"/>
+            <class name="popo.flow.app.test.TestPage"/>
         </classes>
     </test>
 </suite>

@@ -1,12 +1,12 @@
-package com.flow.framework.entity;
+package popo.flow.framework.entity;
 
-import com.flow.framework.driver.Browser;
-import com.flow.framework.driver.DriverManager;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+import popo.flow.framework.driver.Browser;
+import popo.flow.framework.driver.DriverManager;
 
 @Log4j2
 public class BaseEntity {
