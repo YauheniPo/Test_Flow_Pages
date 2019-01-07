@@ -26,12 +26,12 @@ jobs:
 
   - script: ls
     displayName: ls command
-  - script: ls build/
-    displayName: ls 'build' foler command
+  - script: ls target/
+    displayName: ls 'target' foler command
   - script: java -jar target/flow-page-tests.jar --xml testng.xml --cl TestPage --pr=name=JAR
     displayName: java -jar
-  - script: ls build/
-    displayName: ls 'build' foler command
+  - script: ls target/
+    displayName: ls 'target' foler command
   - script: ls
 
 #  - task: PublishBuildArtifacts@1
