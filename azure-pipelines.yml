@@ -28,7 +28,7 @@ jobs:
     displayName: ls command
   - script: ls target/
     displayName: ls 'target' foler command
-  - script: java -jar target/flow-page-tests.jar --xml testng.xml --cl TestPage --pr=name=JAR
+  - script: java -jar target\flow-page-1.0-shaded.jar --xml testng.xml --cl TestPage --pr=name=JAR
     displayName: java -jar
   - script: ls target/
     displayName: ls 'target' foler command
