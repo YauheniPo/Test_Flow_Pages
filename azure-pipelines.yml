@@ -28,7 +28,7 @@ jobs:
     displayName: ls command
   - script: ls build/
     displayName: ls 'build' foler command
-  - script: java -jar build/flow-page-tests.jar --xml testng.xml --cl TestPage --pr=name=JAR
+  - script: java -jar target/flow-page-tests.jar --xml testng.xml --cl TestPage --pr=name=JAR
     displayName: java -jar
   - script: ls build/
     displayName: ls 'build' foler command
