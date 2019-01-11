@@ -4,6 +4,7 @@ import com.codeborne.selenide.Browsers;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 
 public final class DriverManager {
 
@@ -21,6 +22,7 @@ public final class DriverManager {
                 break;
             case IE:
                 Configuration.browser = Browsers.INTERNET_EXPLORER;
+                Configuration.browserCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
                 break;
         }
     }

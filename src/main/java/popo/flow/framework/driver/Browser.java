@@ -41,8 +41,8 @@ public final class Browser {
 
     private static void initBrowserProperties() {
         Configuration.timeout = TIMEOUT;
-
         Configuration.headless = BROWSER_HEADLESS;
+        Configuration.startMaximized = true;
 
         DriverManager.setUp(currentBrowser);
     }
@@ -54,9 +54,6 @@ public final class Browser {
     }
 
     public static void openStartPage() {
-        if (currentBrowser.equals(Browsers.IE)) {
-            Configuration.startMaximized = true;
-        }
         Selenide.open(BROWSER_URL);
         windowMaximize();
     }
