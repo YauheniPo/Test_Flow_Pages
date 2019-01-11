@@ -19,6 +19,9 @@ public final class DriverManager {
             case FIREFOX:
                 Configuration.browser = Browsers.FIREFOX;
                 break;
+            case IE:
+                Configuration.browser = Browsers.INTERNET_EXPLORER;
+                break;
         }
     }
 

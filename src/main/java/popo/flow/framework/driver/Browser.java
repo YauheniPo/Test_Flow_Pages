@@ -19,16 +19,16 @@ public final class Browser {
             ? rbBrowser.getString("browser")
             : System.getenv("browser")).toUpperCase());
 
-    @Getter
     private static final String BROWSER_URL = String.format(rbStage.getString("url"), rbStage.getString("stage"));
-    private static final Long TIMEOUT = new Long(rbBrowser.getObject("browser.timeout").toString());
+    private static final Long TIMEOUT = Long.valueOf(rbBrowser.getObject("browser.timeout").toString());
+    private static final boolean BROWSER_HEADLESS = Boolean.valueOf(rbBrowser.getString("browser.headless"));
 
     private Browser(Browsers browserName) {
         log.info(String.format("Init %s browser", browserName.name()));
     }
 
     public static void getInstance(String browserName) {
-        if(instance == null) {
+        if (instance == null) {
             synchronized (Browser.class) {
                 if (!Boolean.valueOf(browserName)) {
                     currentBrowser = Browsers.valueOf(browserName.toUpperCase());
@@ -42,16 +42,21 @@ public final class Browser {
     private static void initBrowserProperties() {
         Configuration.timeout = TIMEOUT;
 
-        Configuration.headless = true;
+        Configuration.headless = BROWSER_HEADLESS;
 
         DriverManager.setUp(currentBrowser);
     }
 
     private static void windowMaximize() {
-        DriverManager.getDriver().manage().window().maximize();
+        if (!currentBrowser.equals(Browsers.IE)) {
+            DriverManager.getDriver().manage().window().maximize();
+        }
     }
 
     public static void openStartPage() {
+        if (currentBrowser.equals(Browsers.IE)) {
+            Configuration.startMaximized = true;
+        }
         Selenide.open(BROWSER_URL);
         windowMaximize();
     }
@@ -63,7 +68,8 @@ public final class Browser {
     @AllArgsConstructor(access = AccessLevel.PROTECTED)
     public enum Browsers {
         FIREFOX("firefox"),
-        CHROME("chrome");
+        CHROME("chrome"),
+        IE("ie"); //Open Internet Explorer browser. Go to menu View -> Zoom -> Select 100%
 
         @Getter
         private final String value;
