@@ -22,9 +22,13 @@ public final class DriverManager {
                 break;
             case IE:
                 Configuration.browser = Browsers.INTERNET_EXPLORER;
-                Configuration.browserCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
+                setIECapabilities();
                 break;
         }
+    }
+
+    private static void setIECapabilities() {
+        Configuration.browserCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
     }
 
     public static WebDriver getDriver() {

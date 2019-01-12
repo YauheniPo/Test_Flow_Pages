@@ -42,15 +42,12 @@ public final class Browser {
     private static void initBrowserProperties() {
         Configuration.timeout = TIMEOUT;
         Configuration.headless = BROWSER_HEADLESS;
-        Configuration.startMaximized = true;
 
         DriverManager.setUp(currentBrowser);
     }
 
     private static void windowMaximize() {
-        if (!currentBrowser.equals(Browsers.IE)) {
-            DriverManager.getDriver().manage().window().maximize();
-        }
+        DriverManager.getDriver().manage().window().maximize();
     }
 
     public static void openStartPage() {
@@ -66,7 +63,7 @@ public final class Browser {
     public enum Browsers {
         FIREFOX("firefox"),
         CHROME("chrome"),
-        IE("ie"); //Open Internet Explorer browser. Go to menu View -> Zoom -> Select 100%
+        IE("ie"); //Open Internet Explorer browser. Go to menu View -> Zoom -> Select 100% & Settings -> Security -> Lower & uncheck checkbox
 
         @Getter
         private final String value;
