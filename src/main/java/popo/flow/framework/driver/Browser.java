@@ -27,16 +27,17 @@ public final class Browser {
         log.info(String.format("Init %s browser", browserName.name()));
     }
 
-    public static void getInstance(String browserName) {
+    public static Browser getInstance(String browserName) {
         if (instance == null) {
             synchronized (Browser.class) {
-                if (!Boolean.valueOf(browserName)) {
+                if (!Browsers.valueOf(browserName.toUpperCase()).equals(Browsers.DEFAULT)) {
                     currentBrowser = Browsers.valueOf(browserName.toUpperCase());
                 }
                 initBrowserProperties();
                 instance = new Browser(currentBrowser);
             }
         }
+        return instance;
     }
 
     private static void initBrowserProperties() {
@@ -59,11 +60,16 @@ public final class Browser {
         Selenide.refresh();
     }
 
+    public static void cleanInstance() {
+        instance = null;
+    }
+
     @AllArgsConstructor(access = AccessLevel.PROTECTED)
     public enum Browsers {
         FIREFOX("firefox"),
         CHROME("chrome"),
-        IE("ie"); //Open Internet Explorer browser. Go to menu View -> Zoom -> Select 100% & Settings -> Security -> Lower & uncheck checkbox
+        IE("ie"), //Open Internet Explorer browser. Go to menu View -> Zoom -> Select 100% & Settings -> Security -> Lower & uncheck checkbox,
+        DEFAULT("default");
 
         @Getter
         private final String value;

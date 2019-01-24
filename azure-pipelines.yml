@@ -10,6 +10,9 @@ jobs:
 #    vmImage: 'vs2017-win2016'
     vmImage: 'Ubuntu 16.04'
 
+  variables:
+    jarname: 'flow-page-1.0-shaded.jar'
+
   steps:
   - script: ls
     displayName: ls command
@@ -28,15 +31,16 @@ jobs:
     displayName: ls command
   - script: ls target/
     displayName: ls 'target' foler command
-  - script: java -jar target/flow-page-1.0-shaded.jar --xml testng.xml --cl TestPage --pr=name=JAR
+  - script: java -jar target/$(jarname) --xml testng.xml --pr=name=JAR
+#  - script: java -jar target/$(jarname) --xml testng.xml --cl TestWatchCoMainPage --pr=name=JAR
     displayName: java -jar
   - script: ls target/
     displayName: ls 'target' foler command
   - script: ls
 
-#  - task: PublishBuildArtifacts@1
-#    displayName: Publish Build Artifacts
-#    inputs:
-#      PathtoPublish: '$(System.DefaultWorkingDirectory)'
-#      name: 'drop'
+  - task: PublishBuildArtifacts@1
+    displayName: Publish Build Artifacts
+    inputs:
+      PathtoPublish: '$(System.DefaultWorkingDirectory)'
+      name: 'drop'
 

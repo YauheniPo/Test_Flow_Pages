@@ -2,10 +2,7 @@ package popo.flow.framework.entity;
 
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeSuite;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 import popo.flow.framework.driver.Browser;
 import popo.flow.framework.driver.DriverManager;
 
@@ -13,15 +10,17 @@ import popo.flow.framework.driver.DriverManager;
 public class BaseEntity {
 
     @Parameters(value = "browser")
-    @BeforeSuite
-    public void before(@Optional(value = "true") String browserName) {
+    @BeforeMethod(alwaysRun = true)
+    public void before(@Optional(value = "default") String browserName) {
         Browser.getInstance(browserName);
         Browser.openStartPage();
+//        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(TestFrameworkConfig.class);
+//        driver = applicationContext.getBean(WebDriver.class);
     }
 
-    @AfterSuite
+    @AfterMethod(alwaysRun = true)
     public void after() {
-
+        Browser.cleanInstance();
     }
 
     protected WebDriver getWebDriver() {

@@ -78,7 +78,7 @@ public class Runner {
                 myTest.setPackages(xmlPackages);
             }
 
-            myTest.setXmlClasses(classes); //testNG.setTestClasses(new Class[] { TestPage.class });
+            myTest.setXmlClasses(classes); //testNG.setTestClasses(new Class[] { TestWatchCoMainPage.class });
 
 //            List<XmlTest> myTests = new ArrayList<>();
 //            myTests.add(myTest);

@@ -29,6 +29,8 @@ public final class DriverManager {
 
     private static void setIECapabilities() {
         Configuration.browserCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
+        Configuration.browserCapabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS,false);
+        Configuration.browserCapabilities.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING,true);
     }
 
     public static WebDriver getDriver() {
