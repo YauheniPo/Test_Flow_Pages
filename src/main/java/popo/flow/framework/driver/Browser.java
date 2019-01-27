@@ -6,22 +6,21 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
-
-import java.util.ResourceBundle;
+import popo.flow.framework.util.ResourcePropertiesManager;
 
 @Log4j2
 public final class Browser {
 
     private static Browser instance;
-    private static ResourceBundle rbStage = ResourceBundle.getBundle("stage");
-    private static ResourceBundle rbBrowser = ResourceBundle.getBundle("browser");
+    private static ResourcePropertiesManager rpStage = new ResourcePropertiesManager("stage.properties");
+    private static ResourcePropertiesManager rpBrowser = new ResourcePropertiesManager("browser.properties");
     private static Browsers currentBrowser = Browsers.valueOf((System.getenv("browser") == null
-            ? rbBrowser.getString("browser")
+            ? rpBrowser.getProperty("browser")
             : System.getenv("browser")).toUpperCase());
 
-    private static final String BROWSER_URL = String.format(rbStage.getString("url"), rbStage.getString("stage"));
-    private static final Long TIMEOUT = Long.valueOf(rbBrowser.getObject("browser.timeout").toString());
-    private static final boolean BROWSER_HEADLESS = Boolean.valueOf(rbBrowser.getString("browser.headless"));
+    private static final String BROWSER_URL = String.format(rpStage.getProperty("url"), rpStage.getProperty("stage"));
+    private static final Long TIMEOUT = Long.valueOf(rpBrowser.getProperty("browser.timeout"));
+    private static final boolean BROWSER_HEADLESS = Boolean.valueOf(rpBrowser.getProperty("browser.headless"));
 
     private Browser(Browsers browserName) {
         log.info(String.format("Init %s browser", browserName.name()));
