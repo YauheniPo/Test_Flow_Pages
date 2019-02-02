@@ -14,4 +14,11 @@ public class TestWatchCoMainPage extends BaseTest {
         mainWatchCo.menuBar.clickMen();
         mainWatchCo.menuBar.clickWomen();
     }
+
+    @Test(groups = {"page"})
+    public void testHeaderItems2() {
+        MainWatchCo mainWatchCo = new MainWatchCo();
+        mainWatchCo.menuBar.clickWomen();
+        mainWatchCo.menuBar.clickMen();
+    }
 }

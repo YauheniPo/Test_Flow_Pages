@@ -1,39 +1,78 @@
 package popo.flow.framework.driver;
 
-import com.codeborne.selenide.Browsers;
-import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.WebDriverRunner;
-import org.openqa.selenium.WebDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxBinary;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.remote.RemoteWebDriver;
+
+import javax.naming.NamingException;
 
 public final class DriverManager {
 
-    public static void setUp(Browser.Browsers browser) {
-        setWebDriver(browser);
+    public static RemoteWebDriver setUp(Browser.Browsers browser) throws NamingException {
+        return setWebDriver(browser);
     }
 
-    private static void setWebDriver(Browser.Browsers browserType) {
+    private static RemoteWebDriver setWebDriver(Browser.Browsers browserType) throws NamingException {
+        RemoteWebDriver remoteWebDriver;
         switch (browserType) {
             case CHROME:
-                Configuration.browser = Browsers.CHROME;
+                WebDriverManager.chromedriver().setup();
+                remoteWebDriver = new ChromeDriver(getChromeOptionsHeadless());
                 break;
             case FIREFOX:
-                Configuration.browser = Browsers.FIREFOX;
+                WebDriverManager.firefoxdriver().setup();
+                remoteWebDriver = new FirefoxDriver(getFirefoxOptionsHeadless());
                 break;
             case IE:
-                Configuration.browser = Browsers.INTERNET_EXPLORER;
                 setIECapabilities();
+                WebDriverManager.iedriver().setup();
+                remoteWebDriver = new InternetExplorerDriver(setIECapabilities());
                 break;
+            default:
+                throw new NamingException("Incorrect Browser name");
         }
+        return remoteWebDriver;
     }
 
-    private static void setIECapabilities() {
-        Configuration.browserCapabilities.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,true);
-        Configuration.browserCapabilities.setCapability(InternetExplorerDriver.NATIVE_EVENTS,false);
-        Configuration.browserCapabilities.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING,true);
+    private static InternetExplorerOptions setIECapabilities() {
+        InternetExplorerOptions internetExplorerOptions = new InternetExplorerOptions();
+        internetExplorerOptions.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+        internetExplorerOptions.setCapability(InternetExplorerDriver.NATIVE_EVENTS,false);
+        internetExplorerOptions.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING,true);
+        return internetExplorerOptions;
     }
 
-    public static WebDriver getDriver() {
-        return WebDriverRunner.getWebDriver();
+    /**
+     * Gets chrome options headless.
+     *
+     * @return the chrome options headless
+     */
+    private static ChromeOptions getChromeOptionsHeadless() {
+        ChromeOptions options = new ChromeOptions();
+        if (Browser.IS_BROWSER_HEADLESS) {
+            options.setHeadless(true);
+        }
+        return options;
+    }
+
+    /**
+     * Gets firefox options headless.
+     *
+     * @return the firefox options headless
+     */
+    private static FirefoxOptions getFirefoxOptionsHeadless() {
+        FirefoxBinary firefoxBinary = new FirefoxBinary();
+        if (Browser.IS_BROWSER_HEADLESS) {
+            firefoxBinary.addCommandLineOptions("--headless");
+        }
+        FirefoxOptions firefoxOptions = new FirefoxOptions();
+        firefoxOptions.setBinary(firefoxBinary);
+        return firefoxOptions;
     }
 }

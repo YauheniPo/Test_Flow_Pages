@@ -31,8 +31,8 @@ jobs:
     displayName: ls command
   - script: ls target/
     displayName: ls 'target' foler command
-  - script: java -jar target/$(jarname) --xml testng.xml --pr=name=JAR
-#  - script: java -jar target/$(jarname) --xml testng.xml --cl TestWatchCoMainPage --pr=name=JAR
+  - script: java -jar target/$(jarname) --xml testngTogether.xml --pr=name=JAR
+#  - script: java -jar target/$(jarname) --xml testngTogether.xml --cl TestWatchCoMainPage --pr=name=JAR
     displayName: java -jar
   - script: ls target/
     displayName: ls 'target' foler command
