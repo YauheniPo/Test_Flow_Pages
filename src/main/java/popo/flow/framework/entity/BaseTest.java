@@ -16,9 +16,9 @@ public class BaseTest extends BaseEntity {
     protected AssertHelper assertHelper = new AssertHelper();
 
     @Parameters({"name"})
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void beforeMethod(Method m, @Optional(value = "YauheniPo") String name) {
-        System.out.println(String.format("---------------- %s ----------------", name));
+        log.info(String.format("---------------- %s ----------------", name));
         log.info("Test class: " + m.getDeclaringClass().getName());
         Test t = m.getAnnotation(Test.class);
         log.info(String.format("Thread - %d", Thread.currentThread().getId()));

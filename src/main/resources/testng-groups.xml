@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="flow_page" parallel="tests" thread-count="10">
-    <test verbose="2" name="page" group-by-instances="true">
+<suite name="flow_page" parallel="methods" thread-count="10">
+    <test verbose="2" parallel="methods" thread-count="10" name="page" group-by-instances="true">
         <groups>
             <run>
                 <include name="page"/>
