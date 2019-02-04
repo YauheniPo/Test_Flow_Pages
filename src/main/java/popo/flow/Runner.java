@@ -8,8 +8,8 @@ import picocli.CommandLine;
 import popo.flow.framework.listener.TestListener;
 import popo.flow.framework.util.Options;
 
-import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -32,8 +32,13 @@ public class Runner {
                 for (String xml : options.testngXml) {
                     try (InputStream xmlRunnerReader = Objects.requireNonNull(Runner.class.getClassLoader().getResource(xml)).openStream()) {
                         suites.add((new Parser(xmlRunnerReader)).parse().stream().findFirst().get());
-                    } catch (IOException ex) {
-                        log.error("Error for TestNG xml files", ex);
+                    } catch (Exception ex) {
+                        log.debug("Error for TestNG xml files", ex);
+                        try {
+                            suites.add((new Parser(Paths.get(xml).toString()).parse()).stream().findFirst().get());
+                        } catch (Exception e) {
+                            log.error("Error for TestNG xml files", e);
+                        }
                     }
 //                    suites.add((new Parser(URLDecoder.decode(getSystemResource(xml).getPath(), "UTF-8"))).parse().stream().findFirst().get());
 //                    suites.add((new Parser(Paths.get("target", "test-classes", xml).toString()).parse()).stream().findFirst().get());

@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import lombok.extern.log4j.Log4j2;
 import popo.flow.framework.entity.BasePage;
+import popo.flow.framework.helpers.Locators;
 
 import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
@@ -11,11 +12,13 @@ import static com.codeborne.selenide.Selenide.$;
 @Log4j2
 public class MenuBar extends BasePage {
 
+    private String s = Locators.get("header");
     private SelenideElement menu = $(byClassName("menu")).shouldBe(Condition.exist),
             menElement = menu.$(byText("Men")),
             womenElement = menu.$(byText("Women"));
 
     public void clickMen() {
+        log.info("************************" + s);
         log.info("click Men Item");
         menElement.click();
     }

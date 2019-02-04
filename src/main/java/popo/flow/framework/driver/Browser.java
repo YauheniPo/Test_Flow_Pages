@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import popo.flow.framework.helpers.Waiters;
 import popo.flow.framework.util.ResourcePropertiesManager;
 
 @Log4j2
@@ -18,10 +19,11 @@ public final class Browser {
     private static ResourcePropertiesManager rpBrowser = new ResourcePropertiesManager("browser.properties");
     private static final String BROWSER_URL = String.format(rpStage.getProperty("url"), rpStage.getProperty("stage"));
     private static final Long IMPLICITLY_WAIT = Long.valueOf(rpBrowser.getProperty("browser.timeout"));
+    private static final Long PAGE_LOADING_WAIT = Long.valueOf(rpBrowser.getProperty("browser.pagetimeout"));
     private static final boolean IS_BROWSER_HEADLESS = Boolean.valueOf(rpBrowser.getProperty("browser.headless"));
+    public static final String LOCATORS = rpBrowser.getProperty("locators");
     private static BrowserType currentBrowser = BrowserType.valueOf((System.getenv("browser") == null
-            ? rpBrowser.getProperty("browser")
-            : System.getenv("browser")).toUpperCase());
+            ? rpBrowser.getProperty("browser") : System.getenv("browser")).toUpperCase());
 
     public static Browser getInstance(String browserName) {
         if (instance == null) {
@@ -43,6 +45,8 @@ public final class Browser {
     private static void fetchNewDriver() {
         Configuration.timeout = IMPLICITLY_WAIT;
         Configuration.headless = IS_BROWSER_HEADLESS;
+        Configuration.baseUrl = BROWSER_URL;
+        Configuration.startMaximized = true;
         DriverFactory.setUp(currentBrowser);
         WebDriverRunner.getSelenideDriver().driver().getAndCheckWebDriver();
     }
@@ -52,7 +56,8 @@ public final class Browser {
     }
 
     public static void openStartPage() {
-        Selenide.open(BROWSER_URL);
+        Selenide.open("/");
+        Waiters.waitForPageLoaded(PAGE_LOADING_WAIT);
         windowMaximize();
     }
 
