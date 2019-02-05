@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="flow_page" parallel="tests" thread-count="5">
+<suite name="flow_page" parallel="tests" thread-count="3">
 
     <test name="IE" parallel="methods" thread-count="5">
         <parameter name="browser" value="ie"/>
