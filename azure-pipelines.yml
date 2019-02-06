@@ -11,7 +11,7 @@ jobs:
     vmImage: 'Ubuntu 16.04'
 
   variables:
-    jarname: 'flow-page-1.0-shaded.jar'
+    jarname: 'flow-page.jar'
 
   steps:
   - script: ls
@@ -29,12 +29,12 @@ jobs:
 
   - script: ls
     displayName: ls command
-  - script: ls target/
-    displayName: ls 'target' foler command
-  - script: java -jar target/$(jarname) --xml testngTogether.xml --pr=name=JAR
-#  - script: java -jar target/$(jarname) --xml testngTogether.xml --cl TestWatchCoMainPage --pr=name=JAR
+  - script: ls build/
+    displayName: ls 'build' foler command
+  - script: java -jar build/$(jarname) --xml testngTogether.xml --pr=name=JAR
+#  - script: java -jar build/$(jarname) --xml testngTogether.xml --cl TestWatchCoMainPage --pr=name=JAR
     displayName: java -jar
-  - script: ls target/
+  - script: ls ../target/
     displayName: ls 'target' foler command
   - script: ls
 
