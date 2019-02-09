@@ -216,7 +216,7 @@
                                 <resource>
                                     <directory>${basedir}/src/main/resources</directory>
                                     <includes>
-                                        <include>locators</include>
+                                        <include>**/locators/**</include>
                                         <include>browser.properties</include>
                                     </includes>
                                 </resource>
