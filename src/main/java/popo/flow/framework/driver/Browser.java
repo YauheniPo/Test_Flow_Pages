@@ -48,7 +48,7 @@ public final class Browser {
         Configuration.baseUrl = BROWSER_URL;
         Configuration.startMaximized = true;
         DriverFactory.setUp(currentBrowser);
-        WebDriverRunner.getSelenideDriver().driver().getAndCheckWebDriver();
+        WebDriverRunner.getAndCheckWebDriver();
     }
 
     private static void windowMaximize() {
