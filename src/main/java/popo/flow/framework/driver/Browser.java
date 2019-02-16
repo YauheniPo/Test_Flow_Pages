@@ -73,6 +73,7 @@ public final class Browser {
     public enum BrowserType {
         FIREFOX("firefox"),
         CHROME("chrome"),
+        EDGE("edge"),
         IE("ie"), //Open Internet Explorer browser. Go to menu View -> Zoom -> Select 100% & Settings -> Security -> Lower & uncheck checkbox,
         DEFAULT("default");
 

@@ -10,8 +10,8 @@ jobs:
     vmImage: 'vs2017-win2016'
 #    vmImage: 'Ubuntu 16.04'
 
-#  variables:
-#    jarname: 'flow-page.jar'
+  variables:
+    jarname: 'flow-page.jar'
 
   steps:
   - script: ls
@@ -31,7 +31,7 @@ jobs:
     displayName: ls command
   - script: ls build/
     displayName: ls 'build' foler command
-  - script: java -jar build/flow-page.jar --xml testngTogether.xml
+  - script: java -jar build/$(jarname) --xml testngTogether.xml
 #  - script: java -jar build/$(jarname) --xml testngTogether.xml --cl TestWatchCoMainPage --pr=name=JAR
 #  - script: java -jar build/$(jarname) --cl TestWatchCoMainPage --pr=name=JAR
     displayName: java -jar
