@@ -25,7 +25,7 @@ jobs:
       jdkVersionOption: '1.8'
       jdkArchitectureOption: 'x64'
       publishJUnitResults: false
-      goals: 'clean package'
+      goals: 'clean -DskipTests=true package'
 
   - script: ls
     displayName: ls command
