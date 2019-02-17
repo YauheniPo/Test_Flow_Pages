@@ -2,12 +2,12 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="flow_page" parallel="methods" thread-count="10">
 
-    <test name="IE">
-        <parameter name="browser" value="ie"/>
-        <classes>
-            <class name="popo.flow.app.test.TestWatchCoMainPage"/>
-        </classes>
-    </test>
+    <!--<test name="IE">-->
+        <!--<parameter name="browser" value="ie"/>-->
+        <!--<classes>-->
+            <!--<class name="popo.flow.app.test.TestWatchCoMainPage"/>-->
+        <!--</classes>-->
+    <!--</test>-->
 
     <test name="CHROME">
         <parameter name="browser" value="chrome"/>
