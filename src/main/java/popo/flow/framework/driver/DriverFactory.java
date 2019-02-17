@@ -2,8 +2,10 @@ package popo.flow.framework.driver;
 
 import com.codeborne.selenide.Browsers;
 import com.codeborne.selenide.Configuration;
+import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 
+@Log4j2
 public final class DriverFactory {
 
     public static void setUp(Browser.BrowserType browser) {
@@ -18,9 +20,16 @@ public final class DriverFactory {
             case FIREFOX:
                 Configuration.browser = Browsers.FIREFOX;
                 break;
+            case EDGE:
+                Configuration.browser = Browsers.EDGE;
+                break;
             case IE:
                 Configuration.browser = Browsers.INTERNET_EXPLORER;
                 setIECapabilities();
+                break;
+            default:
+                log.info("Default CHROME Browser");
+                Configuration.browser = Browsers.CHROME;
                 break;
         }
     }

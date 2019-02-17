@@ -10,8 +10,8 @@ jobs:
     vmImage: 'vs2017-win2016'
 #    vmImage: 'Ubuntu 16.04'
 
-#  variables:
-#    jarname: 'flow-page.jar'
+  variables:
+    jarname: 'flow-page.jar'
 
   steps:
   - script: ls
@@ -25,13 +25,15 @@ jobs:
       jdkVersionOption: '1.8'
       jdkArchitectureOption: 'x64'
       publishJUnitResults: false
-      goals: 'clean -DskipTests package'
+      goals: 'clean eclipse:clean package'
+#      goals: 'eclipse:clean prepare-package'
+#      goals: 'clean -DskipTests=true package'
 
   - script: ls
     displayName: ls command
   - script: ls build/
     displayName: ls 'build' foler command
-  - script: java -jar build/flow-page.jar --xml testngTogether.xml
+  - script: java -jar build/$(jarname) --xml testngTogether.xml
 #  - script: java -jar build/$(jarname) --xml testngTogether.xml --cl TestWatchCoMainPage --pr=name=JAR
 #  - script: java -jar build/$(jarname) --cl TestWatchCoMainPage --pr=name=JAR
     displayName: java -jar
