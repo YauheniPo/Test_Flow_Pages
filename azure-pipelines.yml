@@ -25,7 +25,9 @@ jobs:
       jdkVersionOption: '1.8'
       jdkArchitectureOption: 'x64'
       publishJUnitResults: false
-      goals: 'clean -DskipTests=true package'
+      goals: 'clean eclipse:clean package'
+#      goals: 'eclipse:clean prepare-package'
+#      goals: 'clean -DskipTests=true package'
 
   - script: ls
     displayName: ls command
