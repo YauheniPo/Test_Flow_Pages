@@ -7,8 +7,8 @@
 jobs:
 - job: PopoTestPageFlow
   pool:
-    vmImage: 'vs2017-win2016'
-#    vmImage: 'Ubuntu 16.04'
+#    vmImage: 'vs2017-win2016'
+    vmImage: 'Ubuntu 16.04'
 
   variables:
     jarname: 'flow-page.jar'
@@ -25,7 +25,7 @@ jobs:
       jdkVersionOption: '1.8'
       jdkArchitectureOption: 'x64'
       publishJUnitResults: false
-      goals: 'clean dependency:copy-dependencies package'
+      goals: 'clean package'
 #      goals: 'eclipse:clean prepare-package'
 #      goals: 'clean -DskipTests=true package'
 
