@@ -22,7 +22,7 @@ public class BaseTest extends BaseEntity {
         log.info("Test class: " + m.getDeclaringClass().getName());
         Test t = m.getAnnotation(Test.class);
         log.info(String.format("Thread - %d", Thread.currentThread().getId()));
-        log.info(getWebDriver().getCapabilities().getBrowserName());
+//        log.info(getWebDriver().getCapabilities().getBrowserName());
         log.info("Groups: " + Arrays.toString(t.groups()));
     }
 }
