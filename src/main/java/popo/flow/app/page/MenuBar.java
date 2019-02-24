@@ -12,9 +12,9 @@ import static com.codeborne.selenide.Selenide.$;
 @Log4j2
 public class MenuBar extends BasePage {
 
-    private SelenideElement menu = $(byClassName(Locators.get("menubar"))).shouldBe(Condition.exist),
-            menElement = menu.$(byText(Locators.get("menubar.men"))),
-            womenElement = menu.$(byText(Locators.get("menubar.women")));
+    private SelenideElement menu = $(byClassName("menu")).shouldBe(Condition.exist),
+            menElement = menu.$(byText("Men")),
+            womenElement = menu.$(byText("Women"));
 
     public void clickMen() {
         log.info("click Men Item");
