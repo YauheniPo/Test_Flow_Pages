@@ -239,7 +239,7 @@
                     <testFailureIgnore>true</testFailureIgnore>
                     <skipTests>true</skipTests>
                     <suiteXmlFiles>
-                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                        <suiteXmlFile>src/main/resources/${suiteXmlFile}</suiteXmlFile>
                     </suiteXmlFiles>
                     <argLine>
                           -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
@@ -252,6 +252,13 @@
                         </property>
                     </properties>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <!--<plugin>-->
                 <!--<artifactId>maven-resources-plugin</artifactId>-->
