@@ -175,7 +175,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
-                            <minimizeJar>true</minimizeJar>
+                            <!--<minimizeJar>true</minimizeJar>-->
                             <finalName>../build/${project.artifactId}</finalName>
                             <filters>
                                 <filter>
