@@ -11,18 +11,17 @@ import static com.codeborne.selenide.Selenide.$;
 @Log4j2
 public class MenuBar extends BasePage {
 
-    private static final SelenideElement
-            MENU = $(Locators.get("menubar")).shouldBe(Condition.exist),
-            MEN_ELEMENT = MENU.$(Locators.get("menubar.men")),
-            WOMEN_ELEMENT = MENU.$(Locators.get("menubar.women"));
+    private SelenideElement menu = $(Locators.get("menubar")).shouldBe(Condition.exist),
+            menElement = menu.$(Locators.get("menubar.men")),
+            womenElement = menu.$(Locators.get("menubar.women"));
 
     public void clickMen() {
         log.info("click Men Item");
-        MEN_ELEMENT.click();
+        menElement.click();
     }
 
     public void clickWomen() {
         log.info("click Women Item");
-        WOMEN_ELEMENT.click();
+        womenElement.click();
     }
 }
