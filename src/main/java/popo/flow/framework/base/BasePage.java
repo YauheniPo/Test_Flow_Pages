@@ -1,4 +1,4 @@
-package popo.flow.framework.entity;
+package popo.flow.framework.base;
 
 import lombok.extern.log4j.Log4j2;
 

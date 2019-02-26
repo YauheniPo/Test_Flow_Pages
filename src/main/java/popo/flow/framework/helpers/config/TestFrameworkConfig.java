@@ -1,4 +1,4 @@
-package popo.flow.framework.config;
+package popo.flow.framework.helpers.config;
 
 import lombok.extern.log4j.Log4j2;
 
