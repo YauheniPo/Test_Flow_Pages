@@ -10,4 +10,9 @@ public class AssertHelper {
         log.info(String.format("assertTrue(%s, %s)", condition, msg));
         Assert.assertTrue(condition, msg);
     }
+
+    public void assertThatTrue(boolean condition) {
+        log.info(String.format("assertTrue(%s)", condition));
+        Assert.assertTrue(condition);
+    }
 }

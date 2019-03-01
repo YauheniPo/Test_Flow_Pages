@@ -1,6 +1,7 @@
 package popo.flow.framework.base;
 
 import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.ThreadContext;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
@@ -18,11 +19,13 @@ public class BaseTest extends BaseEntity {
     @Parameters({"name"})
     @BeforeMethod(alwaysRun = true)
     public void beforeMethod(Method m, @Optional(value = "YauheniPo") String name) {
+        ThreadContext.put("threadContext", m.getName() + "-" + Thread.currentThread().getId());
+
         log.info(String.format("---------------- %s ----------------", name));
         log.info("Test class: " + m.getDeclaringClass().getName());
         Test t = m.getAnnotation(Test.class);
         log.info(String.format("Thread - %d", Thread.currentThread().getId()));
-//        log.info(getWebDriver().getCapabilities().getBrowserName());
+        log.info(getWebDriver().getCapabilities().getBrowserName());
         log.info("Groups: " + Arrays.toString(t.groups()));
     }
 }

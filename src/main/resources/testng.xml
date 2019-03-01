@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="flow_page" parallel="methods" thread-count="1">
 
-    <test name="CHROME">
+    <test name="Default">
         <classes>
             <class name="popo.flow.app.test.TestWatchCoMainPage"/>
         </classes>

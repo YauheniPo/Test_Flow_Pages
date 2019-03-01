@@ -23,7 +23,7 @@ public class Locators {
         LocatorType locatorType = LocatorType.valueOf(locatorProperties[0]);
         switch (locatorType) {
             case text:
-                return byText(locator);
+                return getByText(locator);
             case partText:
                 return withText(locator);
             case id:
@@ -35,6 +35,10 @@ public class Locators {
             default:
                 throw new IllegalArgumentException(String.format("No suck locator type: %s", locatorType.toString()));
         }
+    }
+
+    public static By getByText(String locator) {
+        return byText(locator);
     }
 
     private enum LocatorType {

@@ -11,7 +11,9 @@ import static com.codeborne.selenide.Selenide.$;
 @Log4j2
 public class MenuBar extends BasePage {
 
-    private SelenideElement menu = $(Locators.get("menubar")).shouldBe(Condition.exist),
+    private SelenideElement
+            menu = $(Locators.get("menubar")).shouldBe(Condition.exist),
+            saleElement = menu.$(Locators.get("menubar.sale")),
             menElement = menu.$(Locators.get("menubar.men")),
             womenElement = menu.$(Locators.get("menubar.women"));
 
@@ -23,5 +25,14 @@ public class MenuBar extends BasePage {
     public void clickWomen() {
         log.info("click Women Item");
         womenElement.click();
+    }
+
+    public void clickSale() {
+        log.info("click Sale Item");
+        saleElement.click();
+    }
+
+    public boolean isElementExist(String element) {
+        return $(Locators.getByText(element)).exists();
     }
 }

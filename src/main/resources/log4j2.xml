@@ -1,30 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="DEBUG">
-    <Properties>
-        <Property name="log-path">log</Property>
-        <Property name="filename">log.log</Property>
-    </Properties>
+<Configuration status="INFO">
     <Appenders>
         <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} %p %c{1.} [%t] %-5level %logger{36} - %msg%n" />
         </Console>
-        <File name="MyFile" fileName="${log-path}/${filename}" immediateFlush="false" append="false">
-            <PatternLayout pattern="%d{yyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
-        </File>
-        <RollingFile name="fileLogger" fileName="${log-path}/log.html"
-                     filePattern="${log-path}/log-%d{yyyy-MM-dd}.html">
-            <HTMLLayout charset="UTF-8" title="Logs" locationInfo="true" />
+
+        <RollingFile name="File" fileName="logs/log.log" filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz">
+            <PatternLayout>
+                <Pattern>%d{HH:mm:ss.SSS} %p %c{1.} [%t] %-5level %logger{36} - %msg%n</Pattern>
+            </PatternLayout>
             <Policies>
-                <TimeBasedTriggeringPolicy interval="1" modulate="true" />
-                <SizeBasedTriggeringPolicy size="10 MB" />
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="2 MB" />
             </Policies>
         </RollingFile>
+
+        <Routing name="ThreadContext">
+            <Routes pattern="${ctx:threadContext}">
+                <Route>
+                    <RollingFile name="log-${ctx:threadContext}" fileName="logs/log-test_threadContext_${ctx:threadContext}.log"
+                                 filePattern="logs/$${date:yyyy-MM}/log-%d{MM-dd-yyyy}-%i.log.gz">
+                        <PatternLayout>
+                            <Pattern>%d{HH:mm:ss.SSS} %p %c{1.} [%t] %-5level %logger{36} - %msg%n</Pattern>
+                        </PatternLayout>
+                        <Policies>
+                            <TimeBasedTriggeringPolicy />
+                            <SizeBasedTriggeringPolicy size="2 MB" />
+                        </Policies>
+                    </RollingFile>
+                </Route>
+            </Routes>
+        </Routing>
+
     </Appenders>
     <Loggers>
-        <Root level="DEBUG">
+        <Root level="INFO">
             <AppenderRef ref="Console" />
-            <AppenderRef ref="MyFile" />
-            <AppenderRef ref="fileLogger" />
+            <AppenderRef ref="File" />
+            <AppenderRef ref="ThreadContext" />
         </Root>
     </Loggers>
 </Configuration>
