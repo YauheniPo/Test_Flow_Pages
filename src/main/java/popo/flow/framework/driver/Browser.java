@@ -3,7 +3,6 @@ package popo.flow.framework.driver;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
-import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
@@ -17,7 +16,7 @@ public final class Browser {
     private static Browser instance = new Browser();
     private static ResourcePropertiesManager rpStage = new ResourcePropertiesManager("stage.properties");
     private static ResourcePropertiesManager rpBrowser = new ResourcePropertiesManager("browser.properties");
-    private static final String BROWSER_URL = String.format(rpStage.getProperty("url"), rpStage.getProperty("stage"));
+    @Getter private static final String BROWSER_URL = String.format(rpStage.getProperty("url"), rpStage.getProperty("stage"));
     private static final Long IMPLICITLY_WAIT = Long.valueOf(rpBrowser.getProperty("browser.timeout"));
     private static final Long PAGE_LOADING_WAIT = Long.valueOf(rpBrowser.getProperty("browser.pagetimeout"));
     private static final boolean IS_BROWSER_HEADLESS = Boolean.valueOf(rpBrowser.getProperty("browser.headless"));
@@ -69,7 +68,7 @@ public final class Browser {
         return (RemoteWebDriver) WebDriverRunner.getWebDriver();
     }
 
-    @AllArgsConstructor(access = AccessLevel.PACKAGE)
+    @AllArgsConstructor()
     public enum BrowserType {
         FIREFOX("firefox"),
         CHROME("chrome"),

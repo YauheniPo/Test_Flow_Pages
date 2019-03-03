@@ -4,11 +4,11 @@
     <test verbose="2" parallel="methods" thread-count="10" name="page" group-by-instances="true">
         <groups>
             <run>
-                <include name="page"/>
+                <include name="menu"/>
             </run>
         </groups>
         <packages>
-            <package name="popo.flow.app.test"/>
+            <package name="popo.flow.app.test.*"/>
         </packages>
     </test>
 </suite>

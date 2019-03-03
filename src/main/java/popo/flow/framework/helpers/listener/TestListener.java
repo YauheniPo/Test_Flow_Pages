@@ -1,6 +1,7 @@
 package popo.flow.framework.helpers.listener;
 
 import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.ThreadContext;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
@@ -14,6 +15,8 @@ public class TestListener extends TestListenerAdapter {
 
     @Override
     public void onStart(ITestContext iTestContext) {
+        ThreadContext.put("threadContext", "");
+
         log.info("I am in onStart method " + iTestContext.getName());
     }
 

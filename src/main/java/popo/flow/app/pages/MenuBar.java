@@ -3,6 +3,8 @@ package popo.flow.app.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import lombok.extern.log4j.Log4j2;
+import popo.flow.app.pages.items.MenuItem;
+import popo.flow.app.pages.items.WatchItem;
 import popo.flow.framework.base.BasePage;
 import popo.flow.framework.helpers.Locators;
 
@@ -32,7 +34,12 @@ public class MenuBar extends BasePage {
         saleElement.click();
     }
 
-    public boolean isElementExist(String element) {
-        return $(Locators.getByText(element)).exists();
+    public boolean isItemExist(MenuItem item) {
+        return $(Locators.getByText(item.getItem())).exists();
+    }
+
+    public WatchBrandPage clickPopupMenuItem(WatchItem item) {
+        $(Locators.getWithText(item.getWatchBrand())).click();
+        return new WatchBrandPage();
     }
 }
