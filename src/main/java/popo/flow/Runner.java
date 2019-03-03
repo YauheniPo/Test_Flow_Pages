@@ -1,6 +1,5 @@
 package popo.flow;
 
-import epam.popovich.annotation.time.TrackTime;
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.ThreadContext;
 import org.testng.ITestNGListener;
@@ -20,7 +19,6 @@ public class Runner {
 
     private static final String TESTS_SOURCE = "popo.flow.app.test";
 
-    @TrackTime
     public static void main(String[] args) {
         ThreadContext.put("threadContext", "");
 

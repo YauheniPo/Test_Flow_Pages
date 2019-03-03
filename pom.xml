@@ -19,16 +19,16 @@
         <github.global.server>github</github.global.server>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>epam-popovich-tracktime</id>
-            <url>https://github.com/YauheniPo/git_jar_for_maven/tree/master/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-        </repository>
-    </repositories>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>epam-popovich-tracktime</id>-->
+            <!--<url>https://github.com/YauheniPo/git_jar_for_maven/tree/master/</url>-->
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+                <!--<updatePolicy>always</updatePolicy>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
+    <!--</repositories>-->
 
     <dependencies>
         <dependency>
@@ -97,11 +97,11 @@
             <version>3.2.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>epam.popovich.annotation</groupId>
-            <artifactId>track-time</artifactId>
-            <version>1.4.RELEASE</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>epam.popovich.annotation</groupId>-->
+            <!--<artifactId>track-time</artifactId>-->
+            <!--<version>1.4.RELEASE</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
