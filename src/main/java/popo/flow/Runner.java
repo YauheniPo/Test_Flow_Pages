@@ -14,13 +14,14 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static popo.flow.framework.Contants.LOGGER_THREAD_CONTEXT;
+import static popo.flow.framework.Contants.TESTS_SOURCE;
+
 @Log4j2
 public class Runner {
 
-    private static final String TESTS_SOURCE = "popo.flow.app.test";
-
     public static void main(String[] args) {
-        ThreadContext.put("threadContext", "");
+        ThreadContext.put(LOGGER_THREAD_CONTEXT, "");
 
         Options options = CommandLine.populateCommand(new Options(), args);
 

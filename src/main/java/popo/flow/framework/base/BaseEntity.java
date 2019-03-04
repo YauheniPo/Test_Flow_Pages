@@ -15,6 +15,8 @@ import popo.flow.framework.helpers.listener.TestListener;
 
 import java.lang.reflect.Method;
 
+import static popo.flow.framework.Contants.LOGGER_THREAD_CONTEXT;
+
 @Log4j2
 @Listeners({TestListener.class, ScreenShooter.class, BrowserPerTest.class, BrowserPerClass.class})
 public class BaseEntity {
@@ -33,7 +35,7 @@ public class BaseEntity {
     @Parameters(value = {"browser"})
     @BeforeMethod(alwaysRun = true)
     public void before(Method m, @Optional(value = "default") String browserName) {
-        ThreadContext.put("threadContext", m.getName() + "-" + Thread.currentThread().getId());
+        ThreadContext.put(LOGGER_THREAD_CONTEXT, m.getName() + "-" + Thread.currentThread().getId());
 
         Browser.getInstance(browserName);
         Browser.openStartPage();

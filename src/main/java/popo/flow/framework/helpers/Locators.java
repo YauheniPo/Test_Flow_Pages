@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selectors.*;
 public class Locators {
 
     private static final ResourcePropertiesManager locators;
-    private static final String CONTAINS_XPATH = "//%s[contains(@class, '%s')]";
+    private static final String XPATH_CONTAINS_CLASS = "//%s[contains(@class, '%s')]";
 
     static {
         locators = new ResourcePropertiesManager(Browser.LOCATORS);
@@ -59,11 +59,11 @@ public class Locators {
     }
 
     public static By getByPartialClassTextOfElement(LocatorElement locatorElement, String partialClassText) {
-        return byXpath(String.format(CONTAINS_XPATH, locatorElement.getDomElement(), partialClassText));
+        return byXpath(String.format(XPATH_CONTAINS_CLASS, locatorElement.getDomElement(), partialClassText));
     }
 
     public static By getByPartialClassTextOfAnyElement(String partialClassText) {
-        return byXpath(String.format(CONTAINS_XPATH, LocatorElement.ANY.getDomElement(), partialClassText));
+        return byXpath(String.format(XPATH_CONTAINS_CLASS, LocatorElement.ANY.getDomElement(), partialClassText));
     }
 
     private enum LocatorType {

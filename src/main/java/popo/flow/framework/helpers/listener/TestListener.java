@@ -6,6 +6,8 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
+import static popo.flow.framework.Contants.LOGGER_THREAD_CONTEXT;
+
 @Log4j2
 public class TestListener extends TestListenerAdapter {
 
@@ -15,7 +17,7 @@ public class TestListener extends TestListenerAdapter {
 
     @Override
     public void onStart(ITestContext iTestContext) {
-        ThreadContext.put("threadContext", "");
+        ThreadContext.put(LOGGER_THREAD_CONTEXT, "");
 
         log.info("I am in onStart method " + iTestContext.getName());
     }

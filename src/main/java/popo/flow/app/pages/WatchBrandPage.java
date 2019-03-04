@@ -10,10 +10,10 @@ import static com.codeborne.selenide.Selenide.$;
 public class WatchBrandPage extends BasePage {
 
     public final SortingPanel<WatchBrandPage> sortingPanel = new SortingPanel<>(this);
-    private SelenideElement products = $(Locators.getByPartialClassTextOfElement(
+    private SelenideElement productsPanel = $(Locators.getByPartialClassTextOfElement(
             Locators.LocatorElement.DIV, Locators.getString("watch.items"))).shouldBe(Condition.exist);
 
     public int getCountWatches() {
-        return products.findAll(Locators.getByXpath(".//li")).size();
+        return productsPanel.findAll(Locators.getByXpath(".//li")).size();
     }
 }

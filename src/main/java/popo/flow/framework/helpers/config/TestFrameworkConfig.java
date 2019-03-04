@@ -11,6 +11,8 @@ import popo.flow.framework.driver.Browser;
 import java.io.IOException;
 import java.net.*;
 
+import static popo.flow.framework.Contants.LOGGER_THREAD_CONTEXT;
+
 @Log4j2
 @Configuration
 @ComponentScan("popo.flow.framework")
@@ -19,7 +21,7 @@ public class TestFrameworkConfig {
 
     @Bean
     private static void setLoger() {
-        ThreadContext.put("threadContext", "");
+        ThreadContext.put(LOGGER_THREAD_CONTEXT, "");
     }
 
     @Bean

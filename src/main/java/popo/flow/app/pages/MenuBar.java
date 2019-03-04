@@ -14,10 +14,10 @@ import static com.codeborne.selenide.Selenide.$;
 public class MenuBar extends BasePage {
 
     private SelenideElement
-            menu = $(Locators.get("menubar")).shouldBe(Condition.exist),
-            saleElement = menu.$(Locators.get("menubar.sale")),
-            menElement = menu.$(Locators.get("menubar.men")),
-            womenElement = menu.$(Locators.get("menubar.women"));
+            menuBar = $(Locators.get("menubar")).shouldBe(Condition.exist),
+            saleElement = menuBar.$(Locators.get("menubar.sale")),
+            menElement = menuBar.$(Locators.get("menubar.men")),
+            womenElement = menuBar.$(Locators.get("menubar.women"));
 
     public void clickMen() {
         log.info("click Men Item");
