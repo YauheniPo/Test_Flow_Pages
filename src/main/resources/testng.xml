@@ -4,7 +4,7 @@
 
     <test name="Default">
         <classes>
-            <class name="popo.flow.app.test.TestWatchCoMainPage"/>
+            <class name="popo.flow.app.test.TestWatchCoBrandSortingPage"/>
         </classes>
     </test>
 

@@ -19,7 +19,7 @@
     <test name="CHROME" parallel="methods" thread-count="5">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="popo.flow.app.test.TestWatchCoMainPage"/>
+            <class name="popo.flow.app.test.TestWatchCoBrandSortingPage"/>
         </classes>
     </test>
 

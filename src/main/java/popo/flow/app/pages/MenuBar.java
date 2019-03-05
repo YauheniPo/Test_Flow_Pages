@@ -3,6 +3,8 @@ package popo.flow.app.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import lombok.extern.log4j.Log4j2;
+import popo.flow.app.pages.items.MenuItem;
+import popo.flow.app.pages.items.WatchItem;
 import popo.flow.framework.base.BasePage;
 import popo.flow.framework.helpers.Locators;
 
@@ -12,10 +14,10 @@ import static com.codeborne.selenide.Selenide.$;
 public class MenuBar extends BasePage {
 
     private SelenideElement
-            menu = $(Locators.get("menubar")).shouldBe(Condition.exist),
-            saleElement = menu.$(Locators.get("menubar.sale")),
-            menElement = menu.$(Locators.get("menubar.men")),
-            womenElement = menu.$(Locators.get("menubar.women"));
+            menuBar = $(Locators.get("menubar")).shouldBe(Condition.exist),
+            saleElement = menuBar.$(Locators.get("menubar.sale")),
+            menElement = menuBar.$(Locators.get("menubar.men")),
+            womenElement = menuBar.$(Locators.get("menubar.women"));
 
     public void clickMen() {
         log.info("click Men Item");
@@ -32,7 +34,12 @@ public class MenuBar extends BasePage {
         saleElement.click();
     }
 
-    public boolean isElementExist(String element) {
-        return $(Locators.getByText(element)).exists();
+    public boolean isItemExist(MenuItem item) {
+        return $(Locators.getByText(item.getItem())).exists();
+    }
+
+    public WatchBrandPage clickPopupMenuItem(WatchItem item) {
+        $(Locators.getWithText(item.getWatchBrand())).click();
+        return new WatchBrandPage();
     }
 }

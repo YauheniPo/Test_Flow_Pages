@@ -18,7 +18,7 @@
         <Routing name="ThreadContext">
             <Routes pattern="${ctx:threadContext}">
                 <Route>
-                    <RollingFile name="log-${ctx:threadContext}" fileName="logs/log-test_threadContext_${ctx:threadContext}.log"
+                    <RollingFile name="log-${ctx:threadContext}" fileName="logs/log${ctx:threadContext}.log"
                                  filePattern="logs/$${date:yyyy-MM}/log-%d{MM-dd-yyyy}-%i.log.gz">
                         <PatternLayout>
                             <Pattern>%d{HH:mm:ss.SSS} %p %c{1.} [%t] %-5level %logger{36} - %msg%n</Pattern>

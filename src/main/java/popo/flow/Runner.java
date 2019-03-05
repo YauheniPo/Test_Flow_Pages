@@ -1,6 +1,7 @@
 package popo.flow;
 
 import lombok.extern.log4j.Log4j2;
+import org.apache.logging.log4j.ThreadContext;
 import org.testng.ITestNGListener;
 import org.testng.TestNG;
 import org.testng.xml.*;
@@ -13,12 +14,15 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static popo.flow.framework.Contants.LOGGER_THREAD_CONTEXT;
+import static popo.flow.framework.Contants.TESTS_SOURCE;
+
 @Log4j2
 public class Runner {
 
-    private static final String TESTS_SOURCE = "popo.flow.app.test";
-
     public static void main(String[] args) {
+        ThreadContext.put(LOGGER_THREAD_CONTEXT, "");
+
         Options options = CommandLine.populateCommand(new Options(), args);
 
         List<XmlSuite> suites = new ArrayList<>();
@@ -63,6 +67,9 @@ public class Runner {
 //            xmlClass.setIncludedMethods(includes);
 
             setTestngXmlGroupsPackages(options, myTest);
+            if (args.length == 0) {
+                setTestngXmlPackages(options, myTest);
+            }
 
             myTest.setXmlClasses(classes); //testNG.setTestClasses(new Class[] { TestWatchCoMainPage.class });
 
@@ -96,19 +103,23 @@ public class Runner {
             for (String gr : options.testGroups) {
                 myTest.addIncludedGroup(gr);
             }
-            List<XmlPackage> xmlPackages = new ArrayList<>();
-            XmlPackage xmlPackage = new XmlPackage();
-            if (options.testPackages != null) {
-                xmlPackage.setName(options.testPackages.toString());
-                xmlPackage.setInclude(options.testPackages.stream().map(
-                        (pack) -> String.format("%s.*", pack)).collect(Collectors.toList()));
-            } else {
-                xmlPackage.setName(String.format("%s.*", TESTS_SOURCE));
-                xmlPackage.setInclude(Collections.singletonList(TESTS_SOURCE));
-            }
-            xmlPackages.add(xmlPackage);
-            myTest.setPackages(xmlPackages);
+            setTestngXmlPackages(options, myTest);
         }
+    }
+
+    private static void setTestngXmlPackages(Options options, XmlTest myTest) {
+        List<XmlPackage> xmlPackages = new ArrayList<>();
+        XmlPackage xmlPackage = new XmlPackage();
+        if (options.testPackages != null) {
+            xmlPackage.setName(options.testPackages.toString());
+            xmlPackage.setInclude(options.testPackages.stream().map(
+                    (pack) -> String.format("%s.*", pack)).collect(Collectors.toList()));
+        } else {
+            xmlPackage.setName(String.format("%s.*", TESTS_SOURCE));
+            xmlPackage.setInclude(Collections.singletonList(TESTS_SOURCE));
+        }
+        xmlPackages.add(xmlPackage);
+        myTest.setPackages(xmlPackages);
     }
 
     private static void setTestngXmlParameters(Options options, XmlSuite suite) {

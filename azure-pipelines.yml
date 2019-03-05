@@ -25,7 +25,7 @@ jobs:
       jdkVersionOption: '1.8'
       jdkArchitectureOption: 'x64'
       publishJUnitResults: false
-      goals: 'clean package -Dhttp.keepAlive=false'
+      goals: 'clean -X install -Dhttp.keepAlive=false'
 #      goals: 'eclipse:clean prepare-package'
 #      goals: 'clean -DskipTests=true package'
 
@@ -33,7 +33,7 @@ jobs:
     displayName: ls command
   - script: ls target/
     displayName: ls 'target' foler command
-  - script: java -jar target/$(jarname) --xml testngTogether.xml
+  - script: java -jar target/$(jarname) --xml testng.xml
 #  - script: java -jar target/$(jarname) --xml testngTogether.xml --cl TestWatchCoMainPage --pr=name=JAR
 #  - script: java -jar target/$(jarname) --cl TestWatchCoMainPage --pr=name=JAR
     displayName: java -jar
