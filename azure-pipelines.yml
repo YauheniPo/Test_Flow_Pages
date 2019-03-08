@@ -11,7 +11,7 @@ jobs:
 #    vmImage: 'Ubuntu 16.04'
 
   variables:
-    jarname: 'flow-page-1.0-shaded.jar'
+    jarname: 'flow-page-1.0-shaded.jar' # System.getenv("jarname")
 
   steps:
   - script: ls

@@ -39,7 +39,7 @@ public class MenuBar extends BasePage {
     }
 
     public WatchBrandPage clickPopupMenuItem(WatchItem item) {
-        $(Locators.getWithText(item.getWatchBrand())).click();
+        $(Locators.getWithText(item.getWatchBrand())).shouldBe(Condition.enabled).click();
         return new WatchBrandPage();
     }
 }

@@ -1,6 +1,5 @@
 package popo.flow.app.pages;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +8,8 @@ import popo.flow.app.pages.items.SortingItem;
 import popo.flow.framework.base.BasePage;
 import popo.flow.framework.helpers.Locators;
 
+import static com.codeborne.selenide.Condition.exist;
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.$;
 import static popo.flow.app.Contants.REG_EXP_NUMBER_BETWEEN_BRACKETS;
 
@@ -16,11 +17,12 @@ import static popo.flow.app.Contants.REG_EXP_NUMBER_BETWEEN_BRACKETS;
 @RequiredArgsConstructor
 public class SortingPanel<R extends WatchBrandPage> extends BasePage {
 
-    private final SelenideElement sortingSidebar = $(Locators.get("watch.sort")).shouldBe(Condition.exist);
+    private final SelenideElement sortingSidebar = $(Locators.get("watch.sort")).waitUntil(exist, 6000);
     @NonNull private R watchBrandPage;
 
     public SortingPanel switchSortingItem(SortingItem item) {
         sortingSidebar.find(Locators.getWithText(item.getSortingItem())).click();
+        $(Locators.get("watch.sortItems")).waitUntil(text(item.getSortingItem()), 6000);
         return this;
     }
 

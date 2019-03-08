@@ -9,6 +9,10 @@ import java.util.Objects;
 
 public class Waiters {
 
+    public static void waitForPageLoaded() {
+        waitForPageLoaded(Browser.getPAGE_LOADING_WAIT());
+    }
+
     public static void waitForPageLoaded(long timeout) {
         new WebDriverWait(Browser.getDriver(), timeout)
                 .until((ExpectedCondition<Boolean>) driver -> ((JavascriptExecutor) Objects.requireNonNull(driver))

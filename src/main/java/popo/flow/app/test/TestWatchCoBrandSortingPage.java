@@ -22,8 +22,9 @@ public class TestWatchCoBrandSortingPage extends BaseTest {
         SortingPanel<WatchBrandPage> sortingPanel = mainWatchCo.menuBar.clickPopupMenuItem(watchItem).sortingPanel;
         int count = sortingPanel.getSortingItemsCount(sortingItem);
         WatchBrandPage watchBrandPage = sortingPanel.switchSortingItem(sortingItem).finishSorting();
+        int actualCount = watchBrandPage.getCountWatches();
 
-        assertHelper.assertThatTrue(watchBrandPage.getCountWatches() == count,
-                String.format("Sorting count of watches %s does not match %d", watchItem.getWatchBrand(), count));
+        assertHelper.assertThatTrue(actualCount == count,
+                String.format("Sorting count of watches %s does not match %d, exists %d watch(es)", watchItem.getWatchBrand(), count, actualCount));
     }
 }

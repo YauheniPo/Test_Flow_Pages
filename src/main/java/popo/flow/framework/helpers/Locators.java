@@ -43,27 +43,35 @@ public class Locators {
     }
 
     public static String getString(String locatorName) {
+        log.info(String.format("%s <-- string", locatorName));
         return locators.getProperty(locatorName);
     }
 
     public static By getByText(String locator) {
+        log.info(String.format("%s <-- by text", locator));
         return byText(locator);
     }
 
     public static By getWithText(String locator) {
+        log.info(String.format("%s <-- with text", locator));
         return withText(locator);
     }
 
     public static By getByXpath(String locator) {
+        log.info(String.format("%s <-- xpath", locator));
         return byXpath(locator);
     }
 
     public static By getByPartialClassTextOfElement(LocatorElement locatorElement, String partialClassText) {
-        return byXpath(String.format(XPATH_CONTAINS_CLASS, locatorElement.getDomElement(), partialClassText));
+        String locator = String.format(XPATH_CONTAINS_CLASS, locatorElement.getDomElement(), partialClassText);
+        log.info(String.format("%s <-- partial class text of element", locator));
+        return byXpath(locator);
     }
 
     public static By getByPartialClassTextOfAnyElement(String partialClassText) {
-        return byXpath(String.format(XPATH_CONTAINS_CLASS, LocatorElement.ANY.getDomElement(), partialClassText));
+        String locator = String.format(XPATH_CONTAINS_CLASS, LocatorElement.ANY.getDomElement(), partialClassText);
+        log.info(String.format("%s <-- partial class text of any element", locator));
+        return byXpath(locator);
     }
 
     private enum LocatorType {

@@ -18,7 +18,7 @@ public final class Browser {
     private static ResourcePropertiesManager rpBrowser = new ResourcePropertiesManager("browser.properties");
     @Getter private static final String BROWSER_URL = String.format(rpStage.getProperty("url"), rpStage.getProperty("stage"));
     private static final Long IMPLICITLY_WAIT = Long.valueOf(rpBrowser.getProperty("browser.timeout"));
-    private static final Long PAGE_LOADING_WAIT = Long.valueOf(rpBrowser.getProperty("browser.pagetimeout"));
+    @Getter private static final Long PAGE_LOADING_WAIT = Long.valueOf(rpBrowser.getProperty("browser.pagetimeout"));
     private static final boolean IS_BROWSER_HEADLESS = Boolean.valueOf(rpBrowser.getProperty("browser.headless"));
     public static final String LOCATORS = rpBrowser.getProperty("locators");
     private static BrowserType currentBrowser = BrowserType.valueOf((System.getenv("browser") == null
