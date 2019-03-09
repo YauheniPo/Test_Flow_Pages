@@ -1,6 +1,5 @@
 package popo.flow;
 
-import epam.popovich.annotation.time.TrackTime;
 import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.ThreadContext;
 import org.testng.ITestNGListener;
@@ -21,7 +20,6 @@ import static popo.flow.framework.Contants.TESTS_SOURCE;
 @Log4j2
 public class Runner {
 
-    @TrackTime
     public static void main(String[] args) {
         ThreadContext.put(LOGGER_THREAD_CONTEXT, "");
 
