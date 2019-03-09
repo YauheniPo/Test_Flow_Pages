@@ -24,12 +24,11 @@
 
     <repositories>
         <repository>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
             <id>epam-popovich-tracktime</id>
             <url>https://github.com/YauheniPo/git_jar_for_maven/tree/master/</url>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
         </repository>
     </repositories>
 
