@@ -103,7 +103,7 @@
         <dependency>
             <groupId>epam.popovich.annotation</groupId>
             <artifactId>track-time</artifactId>
-            <version>1.4.RELEASE</version>
+            <version>1.5.RELEASE</version>
         </dependency>
     </dependencies>
 
