@@ -28,7 +28,7 @@ jobs:
       goals: 'clean install -Dhttp.keepAlive=false -DskipTests=true'
 #      goals: 'eclipse:clean prepare-package'
 #      goals: 'clean -DskipTests=true package'
-#      goals: 'test -DsuiteFile=testng-groups.xml'
+#      goals: 'clean test -DsuiteFile=testng-groups.xml'
 
   - script: ls
     displayName: ls command
