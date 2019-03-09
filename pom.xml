@@ -17,6 +17,9 @@
         <lombok.version>1.18.2</lombok.version>
         <aspectj.version>1.8.10</aspectj.version>
         <github.global.server>github</github.global.server>
+        <defaultSuiteFiles>testng.xml</defaultSuiteFiles>
+        <suiteFile>${defaultSuiteFiles}</suiteFile>
+        <!--<allure.maven.version>2.7.0</allure.maven.version>-->
     </properties>
 
     <!--<repositories>-->
@@ -47,12 +50,12 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>2.7.0</version>
-            <scope>test</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>io.qameta.allure</groupId>-->
+            <!--<artifactId>allure-testng</artifactId>-->
+            <!--<version>${allure.maven.version}</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -256,29 +259,29 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
-                    <testFailureIgnore>true</testFailureIgnore>
-                    <skipTests>true</skipTests>
+                    <testFailureIgnore>false</testFailureIgnore>
+                    <!--<skipTests>true</skipTests>-->
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/main/resources/${suiteXmlFile}</suiteXmlFile>
+                        <suiteXmlFile>${project.basedir}/src/main/resources/${suiteFile}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <argLine>
-                          -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
-                    </argLine>
+                    <!--<argLine>-->
+                          <!-- -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar-->
+                    <!--</argLine>-->
                     <!--only for 1.3.* TestNG adapters. Since 1.4.0.RC4, the listener adds via ServiceLoader-->
-                    <properties>
-                        <property>
-                            <name>listener</name>
-                            <value>ru.yandex.qatools.allure.testng.AllureTestListener</value>
-                        </property>
-                    </properties>
+                    <!--<properties>-->
+                        <!--<property>-->
+                            <!--<name>listener</name>-->
+                            <!--<value>ru.yandex.qatools.allure.testng.AllureTestListener</value>-->
+                        <!--</property>-->
+                    <!--</properties>-->
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<groupId>org.aspectj</groupId>-->
+                        <!--<artifactId>aspectjweaver</artifactId>-->
+                        <!--<version>${aspectj.version}</version>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
             </plugin>
             <!--<plugin>-->
                 <!--<artifactId>maven-resources-plugin</artifactId>-->
@@ -343,6 +346,11 @@
                     <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
                 </configuration>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>ru.yandex.qatools.allure</groupId>-->
+                <!--<artifactId>allure-maven-plugin</artifactId>-->
+                <!--<version>2.6</version>-->
+            <!--</plugin>-->
         </plugins>
     </reporting>
 </project>
