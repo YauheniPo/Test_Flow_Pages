@@ -148,7 +148,7 @@
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                     <!-- Disable annotation processing for ourselves. -->
-                    <compilerArgument>-proc:none</compilerArgument>
+                    <!--<compilerArgument>-proc:none</compilerArgument>-->
                     <!--<showWarnings>true</showWarnings>-->
                     <annotationProcessorPaths>
                         <path>
