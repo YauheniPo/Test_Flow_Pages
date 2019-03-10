@@ -22,16 +22,16 @@
         <!--<allure.maven.version>2.7.0</allure.maven.version>-->
     </properties>
 
-    <repositories>
-        <repository>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-            </snapshots>
-            <id>epam-popovich-tracktime</id>
-            <url>https://github.com/YauheniPo/git_jar_for_maven/tree/master/</url>
-        </repository>
-    </repositories>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<snapshots>-->
+                <!--<enabled>true</enabled>-->
+                <!--<updatePolicy>always</updatePolicy>-->
+            <!--</snapshots>-->
+            <!--<id>epam-popovich-tracktime</id>-->
+            <!--<url>https://github.com/YauheniPo/git_jar_for_maven/tree/master/</url>-->
+        <!--</repository>-->
+    <!--</repositories>-->
 
     <dependencies>
         <dependency>
@@ -100,11 +100,11 @@
             <version>3.2.0</version>
         </dependency>
 
-        <dependency>
-            <groupId>epam.popovich.annotation</groupId>
-            <artifactId>track-time</artifactId>
-            <version>1.1</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>epam.popovich.annotation</groupId>-->
+            <!--<artifactId>track-time</artifactId>-->
+            <!--<version>1.1</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <build>
@@ -154,11 +154,11 @@
                             <artifactId>lombok</artifactId>
                             <version>${lombok.version}</version>
                         </path>
-                        <path>
-                            <groupId>epam.popovich.annotation</groupId>
-                            <artifactId>track-time</artifactId>
-                            <version>1.1</version>
-                        </path>
+                        <!--<path>-->
+                            <!--<groupId>epam.popovich.annotation</groupId>-->
+                            <!--<artifactId>track-time</artifactId>-->
+                            <!--<version>1.1</version>-->
+                        <!--</path>-->
                     </annotationProcessorPaths>
                 </configuration>
                 <!--<dependencies>-->
