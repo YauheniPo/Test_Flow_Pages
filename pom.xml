@@ -13,7 +13,7 @@
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <java.version>1.8</java.version>
+        <java.version>1.8.0_191</java.version>
         <lombok.version>1.18.2</lombok.version>
         <aspectj.version>1.8.10</aspectj.version>
         <github.global.server>github</github.global.server>
@@ -22,15 +22,16 @@
         <!--<allure.maven.version>2.7.0</allure.maven.version>-->
     </properties>
 
-    <!--<repositories>-->
-        <!--<repository>-->
-            <!--<snapshots>-->
-                <!--<enabled>false</enabled>-->
-            <!--</snapshots>-->
-            <!--<id>epam-popovich-tracktime</id>-->
-            <!--<url>https://github.com/YauheniPo/git_jar_for_maven/tree/master/</url>-->
-        <!--</repository>-->
-    <!--</repositories>-->
+    <repositories>
+        <repository>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+            <id>epam-popovich-tracktime</id>
+            <url>https://github.com/YauheniPo/git_jar_for_maven/tree/master/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -99,11 +100,11 @@
             <version>3.2.0</version>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>epam.popovich.annotation</groupId>-->
-            <!--<artifactId>track-time</artifactId>-->
-            <!--<version>1.6.RELEASE</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>epam.popovich.annotation</groupId>
+            <artifactId>track-time</artifactId>
+            <version>1.2.RELEASE</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -143,12 +144,12 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
-                    <!--<release>8</release>-->
+                    <verbose>true</verbose>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                     <!-- Disable annotation processing for ourselves. -->
-                    <!--<compilerArgument>-proc:none</compilerArgument>-->
-                    <showWarnings>true</showWarnings>
+                    <compilerArgument>-proc:none</compilerArgument>
+                    <!--<showWarnings>true</showWarnings>-->
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
