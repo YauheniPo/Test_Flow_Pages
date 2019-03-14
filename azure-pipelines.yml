@@ -25,15 +25,16 @@ jobs:
       jdkVersionOption: '1.8'
       jdkArchitectureOption: 'x64'
       publishJUnitResults: false
-      goals: 'clean -X install -Dhttp.keepAlive=false'
+      goals: 'clean install -Dhttp.keepAlive=false -DskipTests=true -Dmaven.wagon.http.pool=false'
 #      goals: 'eclipse:clean prepare-package'
 #      goals: 'clean -DskipTests=true package'
+#      goals: 'clean test -DsuiteFile=testng-groups.xml'
 
   - script: ls
     displayName: ls command
   - script: ls target/
     displayName: ls 'target' foler command
-  - script: java -jar target/$(jarname) --xml testng.xml
+  - script: java -jar target/$(jarname) --xml $(suiteFile)
 #  - script: java -jar target/$(jarname) --xml testngTogether.xml --cl TestWatchCoMainPage --pr=name=JAR
 #  - script: java -jar target/$(jarname) --cl TestWatchCoMainPage --pr=name=JAR
     displayName: java -jar

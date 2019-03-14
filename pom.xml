@@ -13,20 +13,23 @@
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <java.version>1.8</java.version>
+        <java.version>1.8.0_191</java.version>
         <lombok.version>1.18.2</lombok.version>
         <aspectj.version>1.8.10</aspectj.version>
         <github.global.server>github</github.global.server>
+        <defaultSuiteFiles>testng.xml</defaultSuiteFiles>
+        <suiteFile>${defaultSuiteFiles}</suiteFile>
+        <!--<allure.maven.version>2.7.0</allure.maven.version>-->
     </properties>
 
     <!--<repositories>-->
         <!--<repository>-->
-            <!--<id>epam-popovich-tracktime</id>-->
-            <!--<url>https://github.com/YauheniPo/git_jar_for_maven/tree/master/</url>-->
             <!--<snapshots>-->
                 <!--<enabled>true</enabled>-->
                 <!--<updatePolicy>always</updatePolicy>-->
             <!--</snapshots>-->
+            <!--<id>epam-popovich-tracktime</id>-->
+            <!--<url>https://github.com/YauheniPo/git_jar_for_maven/tree/master/</url>-->
         <!--</repository>-->
     <!--</repositories>-->
 
@@ -47,12 +50,12 @@
             <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>2.7.0</version>
-            <scope>test</scope>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>io.qameta.allure</groupId>-->
+            <!--<artifactId>allure-testng</artifactId>-->
+            <!--<version>${allure.maven.version}</version>-->
+            <!--<scope>test</scope>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -100,7 +103,7 @@
         <!--<dependency>-->
             <!--<groupId>epam.popovich.annotation</groupId>-->
             <!--<artifactId>track-time</artifactId>-->
-            <!--<version>1.4.RELEASE</version>-->
+            <!--<version>1.1</version>-->
         <!--</dependency>-->
     </dependencies>
 
@@ -141,10 +144,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.0</version>
                 <configuration>
+                    <verbose>true</verbose>
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
-                    <!-- Disable annotation processing for ourselves. -->
-                    <!--<compilerArgument>-proc:none</compilerArgument>-->
                     <showWarnings>true</showWarnings>
                     <annotationProcessorPaths>
                         <path>
@@ -152,8 +154,20 @@
                             <artifactId>lombok</artifactId>
                             <version>${lombok.version}</version>
                         </path>
+                        <!--<path>-->
+                            <!--<groupId>epam.popovich.annotation</groupId>-->
+                            <!--<artifactId>track-time</artifactId>-->
+                            <!--<version>1.1</version>-->
+                        <!--</path>-->
                     </annotationProcessorPaths>
                 </configuration>
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<groupId>org.ow2.asm</groupId>-->
+                        <!--<artifactId>asm</artifactId>-->
+                        <!--<version>RELEASE</version> &lt;!&ndash; Use newer version of ASM &ndash;&gt;-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
             </plugin>
             <!--<plugin>-->
                 <!--<groupId>org.apache.maven.plugins</groupId>-->
@@ -256,33 +270,34 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M3</version>
                 <configuration>
-                    <testFailureIgnore>true</testFailureIgnore>
-                    <skipTests>true</skipTests>
+                    <testFailureIgnore>false</testFailureIgnore>
+                    <!--<skipTests>true</skipTests>-->
                     <suiteXmlFiles>
-                        <suiteXmlFile>src/main/resources/${suiteXmlFile}</suiteXmlFile>
+                        <suiteXmlFile>${project.basedir}/src/main/resources/${suiteFile}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <argLine>
-                          -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
-                    </argLine>
+                    <!--<argLine>-->
+                          <!-- -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar-->
+                    <!--</argLine>-->
                     <!--only for 1.3.* TestNG adapters. Since 1.4.0.RC4, the listener adds via ServiceLoader-->
-                    <properties>
-                        <property>
-                            <name>listener</name>
-                            <value>ru.yandex.qatools.allure.testng.AllureTestListener</value>
-                        </property>
-                    </properties>
+                    <!--<properties>-->
+                        <!--<property>-->
+                            <!--<name>listener</name>-->
+                            <!--<value>ru.yandex.qatools.allure.testng.AllureTestListener</value>-->
+                        <!--</property>-->
+                    <!--</properties>-->
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<groupId>org.aspectj</groupId>-->
+                        <!--<artifactId>aspectjweaver</artifactId>-->
+                        <!--<version>${aspectj.version}</version>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
             </plugin>
-            <!--<plugin>-->
-                <!--<artifactId>maven-resources-plugin</artifactId>-->
-                <!--<version>3.1.0</version>-->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>3.1.0</version>
                 <!--<executions>-->
                     <!--<execution>-->
                         <!--<id>copy-resources</id>-->
@@ -305,7 +320,7 @@
                         <!--</configuration>-->
                     <!--</execution>-->
                 <!--</executions>-->
-            <!--</plugin>-->
+            </plugin>
             <!--<plugin>-->
                 <!--<groupId>org.apache.maven.plugins</groupId>-->
                 <!--<artifactId>maven-clean-plugin</artifactId>-->
@@ -343,6 +358,11 @@
                     <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
                 </configuration>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>ru.yandex.qatools.allure</groupId>-->
+                <!--<artifactId>allure-maven-plugin</artifactId>-->
+                <!--<version>2.6</version>-->
+            <!--</plugin>-->
         </plugins>
     </reporting>
 </project>
