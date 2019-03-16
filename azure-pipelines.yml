@@ -31,6 +31,7 @@ jobs:
 #      goals: 'clean -DskipTests=true package'
 #      goals: 'clean test -DsuiteFile=testng-groups.xml'
 
+  - script: echo $(vmImage)
   - script: ls
     displayName: ls command
   - script: ls target/
