@@ -6,8 +6,10 @@ import com.codeborne.selenide.WebDriverRunner;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import popo.flow.framework.helpers.Waiters;
+import popo.flow.framework.util.OSValidator;
 import popo.flow.framework.util.ResourcePropertiesManager;
 
 @Log4j2
@@ -51,7 +53,14 @@ public final class Browser {
     }
 
     private static void windowMaximize() {
-        getDriver().manage().window().maximize();
+        log.info(String.format("Initial window size: %s", getDriver().manage().window().getSize()));
+        if (OSValidator.isUnix()) {
+            Dimension d = new Dimension(1920, 1080);
+            getDriver().manage().window().setSize(d);
+        } else if (OSValidator.isWindows()) {
+            getDriver().manage().window().maximize();
+        }
+        log.info(String.format("Final window size: %s", getDriver().manage().window().getSize()));
     }
 
     public static void openStartPage() {

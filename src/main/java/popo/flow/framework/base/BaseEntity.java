@@ -12,6 +12,7 @@ import org.testng.annotations.*;
 import popo.flow.framework.driver.Browser;
 import popo.flow.framework.helpers.config.TestFrameworkConfig;
 import popo.flow.framework.helpers.listener.TestListener;
+import popo.flow.framework.util.OSValidator;
 
 import java.lang.reflect.Method;
 
@@ -24,6 +25,7 @@ public class BaseEntity {
     @BeforeSuite
     public void beforeSuite() {
         AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(TestFrameworkConfig.class);
+        log.info(String.format("---------------- %s ----------------", OSValidator.OS));
 
         if (!applicationContext.getBean(Boolean.class)) {
             String massageSkipTests = "Skipping tests because resource was not available.";
