@@ -3,6 +3,8 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
+variables:
+  vmImage: $(vmImage)
 
 jobs:
 - job: PopoTestPageFlow
@@ -12,7 +14,7 @@ jobs:
 #    vmImage: 'Ubuntu 16.04'
 
   variables:
-    jarname: 'flow-page-1.0-shaded.jar' # System.getenv("jarname")
+    jarname: $(jarname) # System.getenv("jarname")
 
   steps:
   - script: ls
@@ -31,7 +33,6 @@ jobs:
 #      goals: 'clean -DskipTests=true package'
 #      goals: 'clean test -DsuiteFile=testng-groups.xml'
 
-  - script: echo $(vmImage)
   - script: ls
     displayName: ls command
   - script: ls target/
@@ -39,7 +40,7 @@ jobs:
   - script: java -jar target/$(jarname) --xml $(suiteFile)
 #  - script: java -jar target/$(jarname) --xml testngTogether.xml --cl TestWatchCoMainPage --pr=name=JAR
 #  - script: java -jar target/$(jarname) --cl TestWatchCoMainPage --pr=name=JAR
-    displayName: java -jar
+    displayName: java -jar on $(vmImage)
 
 #  - task: PublishBuildArtifacts@1
 #    displayName: Publish Build Artifacts
