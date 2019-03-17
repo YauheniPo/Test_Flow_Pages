@@ -39,6 +39,10 @@ jobs:
 #  - script: java -jar target/$(jarname) --cl TestWatchCoMainPage --pr=name=JAR
     displayName: java -jar on $(vmImageVar)
 
+  - task: PublishPipelineArtifact@0
+    inputs:
+      artifactName: 'artifactName'
+      targetPath: 'build/reports/tests'
 #  - task: PublishBuildArtifacts@1
 #    displayName: Publish Build Artifacts
 #    inputs:
