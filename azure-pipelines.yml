@@ -42,7 +42,7 @@ jobs:
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'artifactName'
-      targetPath: '**/reports/tests/*.png'
+      targetPath: '$(System.DefaultWorkingDirectory)/**/reports/'
 #  - task: PublishBuildArtifacts@1
 #    displayName: Publish Build Artifacts
 #    inputs:
