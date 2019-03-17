@@ -4,17 +4,17 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
 variables:
-  vmImage: $(vmImage)
+  vmImageVar: $(vmImageVar)
 
 jobs:
 - job: PopoTestPageFlow
   pool:
-    vmImage: $(vmImage)
+    vmImage: $(vmImageVar)
 #    vmImage: 'vs2017-win2016'
 #    vmImage: 'Ubuntu 16.04'
 
   variables:
-    jarname: $(jarname) # System.getenv("jarname")
+    jarname: $(jarnameVar) # System.getenv("jarname")
 
   steps:
   - script: ls
@@ -40,7 +40,7 @@ jobs:
   - script: java -jar target/$(jarname) --xml $(suiteFile)
 #  - script: java -jar target/$(jarname) --xml testngTogether.xml --cl TestWatchCoMainPage --pr=name=JAR
 #  - script: java -jar target/$(jarname) --cl TestWatchCoMainPage --pr=name=JAR
-    displayName: java -jar on $(vmImage)
+    displayName: java -jar on $(vmImageVar)
 
 #  - task: PublishBuildArtifacts@1
 #    displayName: Publish Build Artifacts
