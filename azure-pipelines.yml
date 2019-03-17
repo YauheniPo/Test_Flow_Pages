@@ -6,7 +6,7 @@
 jobs:
 - job: PopoTestPageFlow
   pool:
-    vmImage: 'vs2017-win2016'
+    vmImage: $(vmImageVar)
 #    vmImage: 'vs2017-win2016'
 #    vmImage: 'Ubuntu 16.04'
 
@@ -37,7 +37,7 @@ jobs:
   - script: java -jar target/$(jarname) --xml $(suiteFile)
 #  - script: java -jar target/$(jarname) --xml testngTogether.xml --cl TestWatchCoMainPage --pr=name=JAR
 #  - script: java -jar target/$(jarname) --cl TestWatchCoMainPage --pr=name=JAR
-    displayName: java -jar on $(vmImage)
+    displayName: java -jar on $(vmImageVar)
 
 #  - task: PublishBuildArtifacts@1
 #    displayName: Publish Build Artifacts

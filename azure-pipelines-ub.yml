@@ -37,7 +37,7 @@ jobs:
   - script: java -jar target/$(jarname) --xml $(suiteFile)
 #  - script: java -jar target/$(jarname) --xml testngTogether.xml --cl TestWatchCoMainPage --pr=name=JAR
 #  - script: java -jar target/$(jarname) --cl TestWatchCoMainPage --pr=name=JAR
-    displayName: java -jar on $(vmImage)
+    displayName: java -jar on Ubuntu 16.04
 
 #  - task: PublishBuildArtifacts@1
 #    displayName: Publish Build Artifacts
