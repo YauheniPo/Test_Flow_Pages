@@ -42,7 +42,7 @@ jobs:
   - task: PublishPipelineArtifact@0
     inputs:
       artifactName: 'artifactName'
-      targetPath: 'build/reports/tests'
+      targetPath: 'build/*.png'
 #  - task: PublishBuildArtifacts@1
 #    displayName: Publish Build Artifacts
 #    inputs:
