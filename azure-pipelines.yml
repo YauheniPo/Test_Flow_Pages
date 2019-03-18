@@ -39,13 +39,13 @@ jobs:
 #  - script: java -jar target/$(jarname) --cl TestWatchCoMainPage --pr=name=JAR
     displayName: java -jar on $(vmImageVar)
 
-  - task: PublishPipelineArtifact@0
-    inputs:
-      artifactName: 'artifactName'
-      targetPath: '$(System.DefaultWorkingDirectory)/**/reports/'
-#  - task: PublishBuildArtifacts@1
-#    displayName: Publish Build Artifacts
+#  - task: PublishPipelineArtifact@0
 #    inputs:
-#      PathtoPublish: '$(System.DefaultWorkingDirectory)'
-#      name: 'drop'
+#      artifactName: 'artifactName'
+#      targetPath: '$(System.DefaultWorkingDirectory)'
+  - task: PublishBuildArtifacts@1
+    displayName: Publish Build Artifacts
+    inputs:
+      PathtoPublish: '$(System.DefaultWorkingDirectory)'
+      name: 'drop'
 
