@@ -55,7 +55,7 @@ public final class ResourcePropertiesManager {
         if (inStreamBase != null) {
             this.properties.load(inStreamBase);
         } else {
-            log.error(String.format("Base resource \"%1$s\" could not be found", resourceName));
+            log.debug(String.format("Base resource \"%1$s\" could not be found", resourceName));
         }
     }
 
@@ -64,7 +64,7 @@ public final class ResourcePropertiesManager {
             @Cleanup InputStream inStreamOverride = Files.newInputStream(Paths.get(JAR_FILE_DIR, resourceName));
             this.properties.load(inStreamOverride);
         } catch (Exception ex) {
-            log.error(String.format("Override resource \"%1$s\" could not be found", resourceName));
+            log.debug(String.format("Override resource \"%1$s\" could not be found", resourceName));
         }
     }
 }
