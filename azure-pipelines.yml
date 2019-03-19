@@ -9,6 +9,7 @@ jobs:
     vmImage: $(vmImageVar)
 #    vmImage: 'vs2017-win2016'
 #    vmImage: 'Ubuntu 16.04'
+#    vmImage: 'macOS-10.13'
 
   variables:
     jarname: $(jarnameVar) # System.getenv("jarname")
@@ -34,7 +35,7 @@ jobs:
     displayName: ls command
   - script: ls target/
     displayName: ls 'target' foler command
-  - script: java -jar target/$(jarname) --xml $(suiteFile)
+  - script: java -jar target/$(jarname) $(options)
 #  - script: java -jar target/$(jarname) --xml testngTogether.xml --cl TestWatchCoMainPage --pr=name=JAR
 #  - script: java -jar target/$(jarname) --cl TestWatchCoMainPage --pr=name=JAR
     displayName: java -jar on $(vmImageVar)

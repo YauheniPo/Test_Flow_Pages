@@ -4,6 +4,7 @@ import com.codeborne.selenide.testng.BrowserPerClass;
 import com.codeborne.selenide.testng.BrowserPerTest;
 import com.codeborne.selenide.testng.ScreenShooter;
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.logging.log4j.ThreadContext;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -29,7 +30,7 @@ public class BaseEntity {
 
         if (!applicationContext.getBean(Boolean.class)) {
             String massageSkipTests = "Skipping tests because resource was not available.";
-            log.debug(massageSkipTests);
+            log.info(massageSkipTests);
             throw new SkipException(massageSkipTests);
         }
     }
@@ -44,6 +45,11 @@ public class BaseEntity {
     }
 
     protected RemoteWebDriver getWebDriver() {
-        return Browser.getDriver();
+        try {
+            return Browser.getDriver();
+        } catch (Throwable throwable) {
+            log.fatal(ExceptionUtils.getStackTrace(throwable));
+        }
+        return null;
     }
 }

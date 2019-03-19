@@ -1,6 +1,7 @@
 package popo.flow;
 
 import lombok.extern.log4j.Log4j2;
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.apache.logging.log4j.ThreadContext;
 import org.testng.ITestNGListener;
 import org.testng.TestNG;
@@ -36,7 +37,7 @@ public class Runner {
                         parser = (new Parser(xmlRunnerReader)).parse().stream().findFirst();
                         parser.ifPresent(suites::add);
                     } catch (Exception ex) {
-                        log.debug("Error for TestNG xml files", ex);
+                        log.info("Error for TestNG xml files", ex);
                         try {
                             parser = (new Parser(Paths.get(xml).toString()).parse()).stream().findFirst();
                             parser.ifPresent(suites::add);
@@ -85,8 +86,8 @@ public class Runner {
             testNG.setXmlSuites(suites);
             testNG.run();
 
-        } catch (Throwable e) {
-            log.error(e);
+        } catch (Throwable throwable) {
+            log.fatal(ExceptionUtils.getStackTrace(throwable));
         }
     }
 

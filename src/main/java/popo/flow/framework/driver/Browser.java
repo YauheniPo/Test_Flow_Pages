@@ -49,7 +49,7 @@ public final class Browser {
         Configuration.baseUrl = BROWSER_URL;
         Configuration.startMaximized = true;
         DriverFactory.setUp(currentBrowser);
-        WebDriverRunner.getAndCheckWebDriver();
+        log.info(String.format("*************** %s ***************", ((RemoteWebDriver) WebDriverRunner.getAndCheckWebDriver()).getCapabilities().getBrowserName()).toUpperCase());
     }
 
     private static void windowMaximize() {
