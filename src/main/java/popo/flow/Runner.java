@@ -85,7 +85,6 @@ public class Runner {
 
             testNG.setXmlSuites(suites);
             testNG.run();
-
         } catch (Throwable throwable) {
             log.fatal(ExceptionUtils.getStackTrace(throwable));
         }

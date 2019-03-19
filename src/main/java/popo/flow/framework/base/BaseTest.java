@@ -16,7 +16,7 @@ public class BaseTest extends BaseEntity {
     protected AssertHelper assertHelper = new AssertHelper();
 
     @Parameters({"name"})
-    @BeforeMethod(alwaysRun = true, dependsOnMethods = "popo.flow.framework.base.BaseEntity.beforeMethod")
+    @BeforeMethod(alwaysRun = true, dependsOnMethods = "popo.flow.framework.base.BaseEntity.before")
     public void beforeMethod(Method m, @Optional(value = "YauheniPo") String name) {
         log.info(String.format("---- %s ---- %s ---- %s ---- Thread - %d ----", name, m.getDeclaringClass().getName(), m.getName(), Thread.currentThread().getId()));
         Test t = m.getAnnotation(Test.class);
