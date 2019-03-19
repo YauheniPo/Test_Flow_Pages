@@ -37,11 +37,15 @@ public class BaseEntity {
 
     @Parameters(value = {"browser"})
     @BeforeMethod(alwaysRun = true)
-    public void before(Method m, @Optional(value = "default") String browserName) {
-        ThreadContext.put(LOGGER_THREAD_CONTEXT, m.getName() + "-" + Thread.currentThread().getId());
+    public void beforeMethod(Method m, @Optional(value = "default") String browserName) {
+        try {
+            ThreadContext.put(LOGGER_THREAD_CONTEXT, m.getName() + "-" + Thread.currentThread().getId());
 
-        Browser.getInstance(browserName);
-        Browser.openStartPage();
+            Browser.getInstance(browserName);
+            Browser.openStartPage();
+        } catch (Throwable throwable) {
+            log.fatal(ExceptionUtils.getStackTrace(throwable));
+        }
     }
 
     protected RemoteWebDriver getWebDriver() {
