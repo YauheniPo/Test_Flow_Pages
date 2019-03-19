@@ -4,7 +4,7 @@
     <test verbose="2" parallel="methods" thread-count="10" name="page" group-by-instances="true">
         <groups>
             <run>
-                <include name="menu"/>
+                <include name="mock"/>
             </run>
         </groups>
         <packages>
