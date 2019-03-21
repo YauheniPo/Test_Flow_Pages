@@ -1,6 +1,6 @@
 package popo.flow.framework.util;
 
-public class OSValidator {
+public final class OSValidator {
 
     public static String OS = System.getProperty("os.name").toLowerCase();
 
