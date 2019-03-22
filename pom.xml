@@ -52,11 +52,11 @@
         </dependency>
         <!--mvn allure:serve-->
         <!--mvn allure:report-->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>${allure-testng.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>io.qameta.allure</groupId>-->
+            <!--<artifactId>allure-testng</artifactId>-->
+            <!--<version>${allure-testng.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-maven</artifactId>
@@ -292,15 +292,15 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${project.basedir}/src/main/resources/${suiteFile}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <!--<argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>-->
+                    <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>
                 </configuration>
-                <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<groupId>org.aspectj</groupId>-->
-                        <!--<artifactId>aspectjweaver</artifactId>-->
-                        <!--<version>${aspectj.version}</version>-->
-                    <!--</dependency>-->
-                <!--</dependencies>-->
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -345,16 +345,16 @@
                     <!--</filesets>-->
                 <!--</configuration>-->
             <!--</plugin>-->
-            <!--<plugin>-->
-                <!--<groupId>io.qameta.allure</groupId>-->
-                <!--<artifactId>allure-maven</artifactId>-->
-                <!--<version>2.9</version>-->
-                <!--<configuration>-->
-                    <!--<reportVersion>2.6.0</reportVersion>-->
-                    <!--<reportDirectory>${basedir}/target/allure-report</reportDirectory>-->
-                    <!--<resultsDirectory>${basedir}/target/allure-results</resultsDirectory>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <reportVersion>2.6.0</reportVersion>
+                    <reportDirectory>${basedir}/target/allure-report</reportDirectory>
+                    <resultsDirectory>${basedir}/target/allure-results</resultsDirectory>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
     <reporting>
@@ -374,14 +374,14 @@
                     <!--<findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>-->
                 </configuration>
             </plugin>
-            <!--<plugin>-->
-                <!--<groupId>io.qameta.allure</groupId>-->
-                <!--<artifactId>allure-maven</artifactId>-->
-                <!--<version>2.8</version>-->
-                <!--<configuration>-->
-                    <!--<reportVersion>2.3.1</reportVersion>-->
-                <!--</configuration>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.8</version>
+                <configuration>
+                    <reportVersion>2.3.1</reportVersion>
+                </configuration>
+            </plugin>
         </plugins>
         <!--<outputDirectory>${basedir}/site</outputDirectory>-->
     </reporting>
