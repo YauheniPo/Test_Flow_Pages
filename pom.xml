@@ -57,11 +57,11 @@
             <!--<artifactId>allure-testng</artifactId>-->
             <!--<version>${allure-testng.version}</version>-->
         <!--</dependency>-->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-maven</artifactId>
-            <version>2.9</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>io.qameta.allure</groupId>-->
+            <!--<artifactId>allure-maven</artifactId>-->
+            <!--<version>2.9</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -90,11 +90,11 @@
             <version>5.1.4.RELEASE</version>
         </dependency>
         <!--mvn clean compile site-->
-        <!--<dependency>-->
-            <!--<groupId>com.google.code.findbugs</groupId>-->
-            <!--<artifactId>jsr305</artifactId>-->
-            <!--<version>3.0.2</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
+        </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -111,11 +111,11 @@
             <version>3.8.1</version>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>com.squareup.okhttp3</groupId>-->
-            <!--<artifactId>okhttp</artifactId>-->
-            <!--<version>3.10.0</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>3.10.0</version>
+        </dependency>
 
         <!--<dependency>-->
             <!--<groupId>epam.popovich.annotation</groupId>-->
@@ -126,11 +126,11 @@
 
     <build>
         <plugins>
-            <!--<plugin>-->
-                <!--<groupId>org.codehaus.mojo</groupId>-->
-                <!--<artifactId>findbugs-maven-plugin</artifactId>-->
-                <!--<version>3.0.5</version>-->
-            <!--</plugin>-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.5</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
@@ -292,15 +292,15 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>${project.basedir}/src/main/resources/${suiteFile}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>
+                    <!--<argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>-->
                 </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.aspectj</groupId>
-                        <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
-                    </dependency>
-                </dependencies>
+                <!--<dependencies>-->
+                    <!--<dependency>-->
+                        <!--<groupId>org.aspectj</groupId>-->
+                        <!--<artifactId>aspectjweaver</artifactId>-->
+                        <!--<version>${aspectj.version}</version>-->
+                    <!--</dependency>-->
+                <!--</dependencies>-->
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -345,43 +345,43 @@
                     <!--</filesets>-->
                 <!--</configuration>-->
             <!--</plugin>-->
-            <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.9</version>
-                <configuration>
-                    <reportVersion>2.6.0</reportVersion>
-                    <reportDirectory>${basedir}/target/allure-report</reportDirectory>
-                    <resultsDirectory>${basedir}/target/allure-results</resultsDirectory>
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>io.qameta.allure</groupId>-->
+                <!--<artifactId>allure-maven</artifactId>-->
+                <!--<version>2.9</version>-->
+                <!--<configuration>-->
+                    <!--<reportVersion>2.6.0</reportVersion>-->
+                    <!--<reportDirectory>${basedir}/target/allure-report</reportDirectory>-->
+                    <!--<resultsDirectory>${basedir}/target/allure-results</resultsDirectory>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
     </build>
     <reporting>
         <!--<excludeDefaults>true</excludeDefaults>-->
         <plugins>
-            <!--<plugin>-->
-                <!--<groupId>org.codehaus.mojo</groupId>-->
-                <!--<artifactId>findbugs-maven-plugin</artifactId>-->
-                <!--<version>3.0.5</version>-->
-                <!--<configuration>-->
-                    <!--<effort>Max</effort>-->
-                    <!--&lt;!&ndash; Reports all bugs (other values are medium and max) &ndash;&gt;-->
-                    <!--<threshold>Low</threshold>-->
-                    <!--&lt;!&ndash; Produces XML report &ndash;&gt;-->
-                    <!--<xmlOutput>true</xmlOutput>-->
-                    <!--&lt;!&ndash; Configures the directory in which the XML report is created &ndash;&gt;-->
-                    <!--&lt;!&ndash;<findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>&ndash;&gt;-->
-                <!--</configuration>-->
-            <!--</plugin>-->
             <plugin>
-                <groupId>io.qameta.allure</groupId>
-                <artifactId>allure-maven</artifactId>
-                <version>2.8</version>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.5</version>
                 <configuration>
-                    <reportVersion>2.3.1</reportVersion>
+                    <effort>Max</effort>
+                    <!-- Reports all bugs (other values are medium and max) -->
+                    <threshold>Low</threshold>
+                    <!-- Produces XML report -->
+                    <xmlOutput>true</xmlOutput>
+                    <!-- Configures the directory in which the XML report is created -->
+                    <!--<findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>-->
                 </configuration>
             </plugin>
+            <!--<plugin>-->
+                <!--<groupId>io.qameta.allure</groupId>-->
+                <!--<artifactId>allure-maven</artifactId>-->
+                <!--<version>2.8</version>-->
+                <!--<configuration>-->
+                    <!--<reportVersion>2.3.1</reportVersion>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
         </plugins>
         <!--<outputDirectory>${basedir}/site</outputDirectory>-->
     </reporting>
