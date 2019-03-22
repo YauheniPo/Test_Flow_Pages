@@ -52,11 +52,11 @@
         </dependency>
         <!--mvn allure:serve-->
         <!--mvn allure:report-->
-        <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>${allure-testng.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>io.qameta.allure</groupId>-->
+            <!--<artifactId>allure-testng</artifactId>-->
+            <!--<version>${allure-testng.version}</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-maven</artifactId>
