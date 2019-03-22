@@ -291,10 +291,10 @@
                     </dependency>
                 </dependencies>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>3.1.0</version>
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-resources-plugin</artifactId>-->
+                <!--<version>3.1.0</version>-->
                 <!--<executions>-->
                     <!--<execution>-->
                         <!--<id>copy-resources</id>-->
@@ -317,7 +317,7 @@
                         <!--</configuration>-->
                     <!--</execution>-->
                 <!--</executions>-->
-            </plugin>
+            <!--</plugin>-->
             <!--<plugin>-->
                 <!--<groupId>org.apache.maven.plugins</groupId>-->
                 <!--<artifactId>maven-clean-plugin</artifactId>-->
@@ -360,7 +360,7 @@
                     <!-- Produces XML report -->
                     <xmlOutput>true</xmlOutput>
                     <!-- Configures the directory in which the XML report is created -->
-                    <findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>
+                    <!--<findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>-->
                 </configuration>
             </plugin>
             <plugin>
