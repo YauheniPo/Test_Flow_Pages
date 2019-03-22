@@ -26,7 +26,7 @@ jobs:
       jdkVersionOption: '1.8'
       jdkArchitectureOption: 'x64'
       publishJUnitResults: false
-      goals: 'clean install site -Dhttp.keepAlive=false -DskipTests=true -Dmaven.wagon.http.pool=false'
+      goals: 'clean install -Dhttp.keepAlive=false -DskipTests=true -Dmaven.wagon.http.pool=false'
 #      goals: 'eclipse:clean prepare-package'
 #      goals: 'clean -DskipTests=true package'
 #      goals: 'clean test -DsuiteFile=testng-groups.xml'
@@ -41,6 +41,8 @@ jobs:
     displayName: java -jar on $(vmImageVar)
   - script: mvn allure:report
     displayName: allure
+  - script: mvn site
+    displayName: site
 
 #  - task: PublishPipelineArtifact@0
 #    inputs:
