@@ -90,11 +90,11 @@
             <version>5.1.4.RELEASE</version>
         </dependency>
         <!--mvn clean compile site-->
-        <dependency>
-            <groupId>com.google.code.findbugs</groupId>
-            <artifactId>jsr305</artifactId>
-            <version>3.0.2</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.google.code.findbugs</groupId>-->
+            <!--<artifactId>jsr305</artifactId>-->
+            <!--<version>3.0.2</version>-->
+        <!--</dependency>-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -111,11 +111,11 @@
             <version>3.8.1</version>
         </dependency>
 
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-            <version>3.10.0</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.squareup.okhttp3</groupId>-->
+            <!--<artifactId>okhttp</artifactId>-->
+            <!--<version>3.10.0</version>-->
+        <!--</dependency>-->
 
         <!--<dependency>-->
             <!--<groupId>epam.popovich.annotation</groupId>-->
@@ -126,11 +126,11 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>3.0.5</version>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.codehaus.mojo</groupId>-->
+                <!--<artifactId>findbugs-maven-plugin</artifactId>-->
+                <!--<version>3.0.5</version>-->
+            <!--</plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-site-plugin</artifactId>
@@ -360,20 +360,20 @@
     <reporting>
         <!--<excludeDefaults>true</excludeDefaults>-->
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>findbugs-maven-plugin</artifactId>
-                <version>3.0.5</version>
-                <configuration>
-                    <effort>Max</effort>
-                    <!-- Reports all bugs (other values are medium and max) -->
-                    <threshold>Low</threshold>
-                    <!-- Produces XML report -->
-                    <xmlOutput>true</xmlOutput>
-                    <!-- Configures the directory in which the XML report is created -->
-                    <!--<findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>-->
-                </configuration>
-            </plugin>
+            <!--<plugin>-->
+                <!--<groupId>org.codehaus.mojo</groupId>-->
+                <!--<artifactId>findbugs-maven-plugin</artifactId>-->
+                <!--<version>3.0.5</version>-->
+                <!--<configuration>-->
+                    <!--<effort>Max</effort>-->
+                    <!--&lt;!&ndash; Reports all bugs (other values are medium and max) &ndash;&gt;-->
+                    <!--<threshold>Low</threshold>-->
+                    <!--&lt;!&ndash; Produces XML report &ndash;&gt;-->
+                    <!--<xmlOutput>true</xmlOutput>-->
+                    <!--&lt;!&ndash; Configures the directory in which the XML report is created &ndash;&gt;-->
+                    <!--&lt;!&ndash;<findbugsXmlOutputDirectory>${project.build.directory}/findbugs</findbugsXmlOutputDirectory>&ndash;&gt;-->
+                <!--</configuration>-->
+            <!--</plugin>-->
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
