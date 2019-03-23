@@ -9,7 +9,7 @@ import popo.flow.framework.base.BaseTest;
 @Log4j2
 public class TestWatchCoMainPage extends BaseTest {
 
-    @Test(groups = {"menu"})
+    @Test(groups = {"menu", "test"})
     public void testHeaderWomenItem() {
         MenuItem item = MenuItem.TOP_WATCH_BRANDS_MAIN_MENU_ITEM;
 

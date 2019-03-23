@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="flow_page" parallel="true" thread-count="10">
+    <test parallel="methods" thread-count="10" name="groups"> <!--group-by-instances="true"-->
+        <groups>
+            <run>
+                <include name="test"/>
+            </run>
+        </groups>
+        <packages>
+            <package name="popo.flow.app.test.*"/>
+        </packages>
+    </test>
+</suite>

@@ -13,7 +13,7 @@
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <java.version>1.8.0_191</java.version>
+        <java.version>1.8</java.version>
         <lombok.version>1.18.2</lombok.version>
         <aspectj.version>1.8.10</aspectj.version>
         <github.global.server>github</github.global.server>
@@ -52,16 +52,16 @@
         </dependency>
         <!--mvn allure:serve-->
         <!--mvn allure:report-->
-        <!--<dependency>-->
-            <!--<groupId>io.qameta.allure</groupId>-->
-            <!--<artifactId>allure-testng</artifactId>-->
-            <!--<version>${allure-testng.version}</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-            <!--<groupId>io.qameta.allure</groupId>-->
-            <!--<artifactId>allure-maven</artifactId>-->
-            <!--<version>2.9</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure-testng.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-java-migration</artifactId>
+            <version>2.10.0</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
@@ -110,12 +110,16 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.8.1</version>
         </dependency>
-
-        <!--<dependency>-->
-            <!--<groupId>com.squareup.okhttp3</groupId>-->
-            <!--<artifactId>okhttp</artifactId>-->
-            <!--<version>3.10.0</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.squareup.okhttp3</groupId>
+            <artifactId>okhttp</artifactId>
+            <version>3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mortbay.jetty</groupId>
+            <artifactId>jetty</artifactId>
+            <version>7.0.0.pre5</version>
+        </dependency>
 
         <!--<dependency>-->
             <!--<groupId>epam.popovich.annotation</groupId>-->
@@ -126,6 +130,16 @@
 
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-site-plugin</artifactId>
+                <version>3.7.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
             <!--<plugin>-->
                 <!--&lt;!&ndash; Build an executable JAR &ndash;&gt;-->
                 <!--<groupId>org.apache.maven.plugins</groupId>-->
@@ -275,17 +289,26 @@
                     <testFailureIgnore>false</testFailureIgnore>
                     <!--<skipTests>true</skipTests>-->
                     <suiteXmlFiles>
+                        <!--mvn -DsuiteFile="testng-groups.xml" test-->
                         <suiteXmlFile>${project.basedir}/src/main/resources/${suiteFile}</suiteXmlFile>
                     </suiteXmlFiles>
-                    <!--<argLine>-javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"</argLine>-->
+                    <argLine>
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+                    </argLine>
+                    <!--<properties>-->
+                        <!--<property>-->
+                            <!--<name>listener</name>-->
+                            <!--<value>io.qameta.allure.testng.AllureTestNg</value>-->
+                        <!--</property>-->
+                    <!--</properties>-->
                 </configuration>
-                <!--<dependencies>-->
-                    <!--<dependency>-->
-                        <!--<groupId>org.aspectj</groupId>-->
-                        <!--<artifactId>aspectjweaver</artifactId>-->
-                        <!--<version>${aspectj.version}</version>-->
-                    <!--</dependency>-->
-                <!--</dependencies>-->
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
             <!--<plugin>-->
                 <!--<groupId>org.apache.maven.plugins</groupId>-->
@@ -330,6 +353,23 @@
                     <!--</filesets>-->
                 <!--</configuration>-->
             <!--</plugin>-->
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.9</version>
+            </plugin>
         </plugins>
     </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>io.qameta.allure</groupId>
+                <artifactId>allure-maven</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <reportVersion>2.6.0</reportVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
