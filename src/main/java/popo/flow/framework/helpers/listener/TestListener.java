@@ -6,7 +6,7 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
-import static popo.flow.framework.Contants.LOGGER_THREAD_CONTEXT;
+import static popo.flow.framework.Constants.LOGGER_THREAD_CONTEXT;
 
 @Log4j2
 public class TestListener extends TestListenerAdapter {

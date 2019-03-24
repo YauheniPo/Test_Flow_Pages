@@ -15,8 +15,8 @@ import java.nio.file.Paths;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static popo.flow.framework.Contants.LOGGER_THREAD_CONTEXT;
-import static popo.flow.framework.Contants.TESTS_SOURCE;
+import static popo.flow.framework.Constants.LOGGER_THREAD_CONTEXT;
+import static popo.flow.framework.Constants.TESTS_SOURCE;
 
 @Log4j2
 public class Runner {

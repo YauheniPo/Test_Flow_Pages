@@ -17,7 +17,7 @@ import popo.flow.framework.util.OSValidator;
 
 import java.lang.reflect.Method;
 
-import static popo.flow.framework.Contants.LOGGER_THREAD_CONTEXT;
+import static popo.flow.framework.Constants.LOGGER_THREAD_CONTEXT;
 
 @Log4j2
 @Listeners({TestListener.class, ScreenShooter.class, BrowserPerTest.class, BrowserPerClass.class})

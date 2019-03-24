@@ -3,6 +3,7 @@
 mvn clean package
 
 mvn clean -DskipTests=true package
+mvn clean install -Dhttp.keepAlive=false -DskipTests=true -Dmaven.wagon.http.pool=false
 
 java -jar target\flow-page-1.0-shaded.jar --xml testng.xml
 

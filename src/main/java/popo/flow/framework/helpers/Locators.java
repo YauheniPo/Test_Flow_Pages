@@ -12,15 +12,11 @@ import static com.codeborne.selenide.Selectors.*;
 @Log4j2
 public class Locators {
 
-    private static final ResourcePropertiesManager locators;
+    private static final ResourcePropertiesManager LOCATORS = new ResourcePropertiesManager(Browser.LOCATORS);
     private static final String XPATH_CONTAINS_CLASS = "//%s[contains(@class, '%s')]";
 
-    static {
-        locators = new ResourcePropertiesManager(Browser.LOCATORS);
-    }
-
     public static By get(String locatorName) {
-        String locatorProperty = locators.getProperty(locatorName);
+        String locatorProperty = LOCATORS.getProperty(locatorName);
         String[] locatorProperties = locatorProperty.split("=");
         String locator = locatorProperties[1];
         LocatorType locatorType = LocatorType.valueOf(locatorProperties[0]);
@@ -44,7 +40,7 @@ public class Locators {
 
     public static String getString(String locatorName) {
         log.info(String.format("%s <-- string", locatorName));
-        return locators.getProperty(locatorName);
+        return LOCATORS.getProperty(locatorName);
     }
 
     public static By getByText(String locator) {

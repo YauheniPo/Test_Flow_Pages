@@ -11,7 +11,7 @@ import popo.flow.framework.driver.Browser;
 import java.io.IOException;
 import java.net.*;
 
-import static popo.flow.framework.Contants.LOGGER_THREAD_CONTEXT;
+import static popo.flow.framework.Constants.LOGGER_THREAD_CONTEXT;
 
 @Log4j2
 @Configuration
