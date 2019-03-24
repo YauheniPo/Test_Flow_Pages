@@ -90,11 +90,11 @@
             <version>5.1.4.RELEASE</version>
         </dependency>
         <!--mvn clean compile site-->
-        <!--<dependency>-->
-            <!--<groupId>com.google.code.findbugs</groupId>-->
-            <!--<artifactId>jsr305</artifactId>-->
-            <!--<version>3.0.2</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
+        </dependency>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
@@ -362,6 +362,16 @@
     </build>
     <reporting>
         <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>findbugs-maven-plugin</artifactId>
+                <version>3.0.5</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                    <xmlOutput>true</xmlOutput>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>

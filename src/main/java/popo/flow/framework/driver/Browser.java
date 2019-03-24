@@ -8,14 +8,15 @@ import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import popo.flow.framework.helpers.Waiters;
 import popo.flow.framework.util.OSValidator;
 import popo.flow.framework.util.ResourcePropertiesManager;
+
+import java.util.Locale;
 
 @Log4j2
 public final class Browser {
 
-    private static Browser instance = new Browser();
+    private volatile static Browser instance = new Browser();
     private static ResourcePropertiesManager rpStage = new ResourcePropertiesManager("stage.properties");
     private static ResourcePropertiesManager rpBrowser = new ResourcePropertiesManager("browser.properties");
     @Getter private static final String BROWSER_URL = String.format(rpStage.getProperty("url"), rpStage.getProperty("stage"));
@@ -24,21 +25,20 @@ public final class Browser {
     private static final boolean IS_BROWSER_HEADLESS = Boolean.valueOf(rpBrowser.getProperty("browser.headless"));
     public static final String LOCATORS = rpBrowser.getProperty("locators");
     private static BrowserType currentBrowser = BrowserType.valueOf((System.getenv("browser") == null
-            ? rpBrowser.getProperty("browser") : System.getenv("browser")).toUpperCase());
+            ? rpBrowser.getProperty("browser") : System.getenv("browser")).toUpperCase(Locale.ENGLISH));
 
-    public static Browser getInstance(String browserName) {
+    public static void getInstance(String browserName) {
         if (instance == null) {
             synchronized (Browser.class) {
                 instance = new Browser();
             }
         }
         setBrowser(browserName);
-        return instance;
     }
 
     private static synchronized void setBrowser(String browserName) {
-        if (!BrowserType.valueOf(browserName.toUpperCase()).equals(BrowserType.DEFAULT)) {
-            currentBrowser = BrowserType.valueOf(browserName.toUpperCase());
+        if (!BrowserType.valueOf(browserName.toUpperCase(Locale.ENGLISH)).equals(BrowserType.DEFAULT)) {
+            currentBrowser = BrowserType.valueOf(browserName.toUpperCase(Locale.ENGLISH));
         }
         fetchNewDriver();
     }
@@ -49,7 +49,8 @@ public final class Browser {
         Configuration.baseUrl = BROWSER_URL;
         Configuration.startMaximized = true;
         DriverFactory.setUp(currentBrowser);
-        log.info(String.format("*************** %s ***************", ((RemoteWebDriver) WebDriverRunner.getAndCheckWebDriver()).getCapabilities().getBrowserName()).toUpperCase());
+        log.info(String.format("*************** %s ***************",
+                ((RemoteWebDriver) WebDriverRunner.getAndCheckWebDriver()).getCapabilities().getBrowserName()).toUpperCase(Locale.ENGLISH));
     }
 
     private static void windowMaximize() {
@@ -65,7 +66,6 @@ public final class Browser {
 
     public static void openStartPage() {
         Selenide.open("/");
-        Waiters.waitForPageLoaded(PAGE_LOADING_WAIT);
         windowMaximize();
     }
 

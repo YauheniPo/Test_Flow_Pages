@@ -39,8 +39,8 @@ jobs:
 #  - script: java -jar target/$(jarname) --xml testngTogether.xml --cl TestWatchCoMainPage --pr=name=JAR
 #  - script: java -jar target/$(jarname) --cl TestWatchCoMainPage --pr=name=JAR
     displayName: java -jar on $(vmImageVar)
-  - script: mvn allure:report
-    displayName: allure
+#  - script: mvn allure:report
+#    displayName: allure
   - script: mvn site
     displayName: site
 

@@ -28,7 +28,7 @@ public class SortingPanel<R extends WatchBrandPage> extends BasePage {
 
     public int getSortingItemsCount(SortingItem item) {
         String count = sortingSidebar.find(Locators.getWithText(item.getSortingItem())).parent().getText();
-        return Integer.valueOf(count.replaceAll(REG_EXP_NUMBER_BETWEEN_BRACKETS, ""));
+        return Integer.parseInt(count.replaceAll(REG_EXP_NUMBER_BETWEEN_BRACKETS, ""));
     }
 
     public R finishSorting() {
