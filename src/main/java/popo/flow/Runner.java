@@ -16,10 +16,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import static popo.flow.framework.Constants.LOGGER_THREAD_CONTEXT;
-import static popo.flow.framework.Constants.TESTS_SOURCE;
 
 @Log4j2
 public class Runner {
+
+    private static final String TESTS_SOURCE = "popo.flow.app.test";
 
     public static void main(String[] args) {
         ThreadContext.put(LOGGER_THREAD_CONTEXT, "");

@@ -11,34 +11,34 @@ public class TestWatchCoMainPage extends BaseTest {
 
     @Test(groups = {"menu", "test"})
     public void testHeaderWomenItem() {
-        MenuItem item = MenuItem.TOP_WATCH_BRANDS_MAIN_MENU_ITEM;
+        MenuItem topWatchBrandsMainMenuItem = MenuItem.TOP_WATCH_BRANDS_MAIN_MENU_ITEM;
 
         MainWatchCo mainWatchCo = new MainWatchCo();
         mainWatchCo.menuBar.clickWomen();
 
-        assertHelper.assertThatTrue(mainWatchCo.menuBar.isItemExist(item),
-                String.format("%s does not exist", item.getItem()));
+        assertHelper.assertThatTrue(mainWatchCo.menuBar.isItemExist(topWatchBrandsMainMenuItem),
+                String.format("%s does not exist", topWatchBrandsMainMenuItem.getItem()));
     }
 
     @Test(groups = {"menu"})
     public void testHeaderMenItem() {
-        MenuItem item = MenuItem.TOP_WATCH_BRANDS_MAIN_MENU_ITEM;
+        MenuItem topWatchBrandsMainMenuItem = MenuItem.TOP_WATCH_BRANDS_MAIN_MENU_ITEM;
 
         MainWatchCo mainWatchCo = new MainWatchCo();
         mainWatchCo.menuBar.clickMen();
 
-        assertHelper.assertThatTrue(mainWatchCo.menuBar.isItemExist(item),
-                String.format("%s does not exist", item.getItem()));
+        assertHelper.assertThatTrue(mainWatchCo.menuBar.isItemExist(topWatchBrandsMainMenuItem),
+                String.format("%s does not exist", topWatchBrandsMainMenuItem.getItem()));
     }
 
     @Test(groups = {"menu"})
     public void testHeaderSaleItem() {
-        MenuItem item = MenuItem.ALL;
+        MenuItem all = MenuItem.ALL;
 
         MainWatchCo mainWatchCo = new MainWatchCo();
         mainWatchCo.menuBar.clickSale();
 
-        assertHelper.assertThatTrue(mainWatchCo.menuBar.isItemExist(item),
-                String.format("%s does not exist", item.getItem()));
+        assertHelper.assertThatTrue(mainWatchCo.menuBar.isItemExist(all),
+                String.format("%s does not exist", all.getItem()));
     }
 }

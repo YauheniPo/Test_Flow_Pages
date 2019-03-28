@@ -38,7 +38,7 @@ public class Locators {
         }
     }
 
-    public static String getString(String locatorName) {
+    public static String getLocator(String locatorName) {
         log.info(String.format("%s <-- string", locatorName));
         return LOCATORS.getProperty(locatorName);
     }

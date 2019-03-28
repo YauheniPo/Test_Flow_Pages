@@ -9,6 +9,8 @@ import java.util.Objects;
 
 public class Waiters {
 
+    public static final short EXIST_TIMEOUT = 6000;
+
     public static void waitForPageLoaded() {
         waitForPageLoaded(Browser.getPAGE_LOADING_WAIT());
     }

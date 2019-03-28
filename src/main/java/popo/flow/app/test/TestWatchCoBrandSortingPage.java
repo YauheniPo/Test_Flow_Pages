@@ -14,17 +14,17 @@ public class TestWatchCoBrandSortingPage extends BaseTest {
 
     @Test(groups = {"sorting", "watch", "menu"})
     public void testSortingWatchBrandItem() {
-        final WatchItem watchItem = WatchItem.LUMINOX;
-        final SortingItem sortingItem = SortingItem.ANALOG;
+        final WatchItem luminox = WatchItem.LUMINOX;
+        final SortingItem analog = SortingItem.ANALOG;
 
         MainWatchCo mainWatchCo = new MainWatchCo();
         mainWatchCo.menuBar.clickMen();
-        SortingPanel<WatchBrandPage> sortingPanel = mainWatchCo.menuBar.clickPopupMenuItem(watchItem).sortingPanel;
-        int count = sortingPanel.getSortingItemsCount(sortingItem);
-        WatchBrandPage watchBrandPage = sortingPanel.switchSortingItem(sortingItem).finishSorting();
+        SortingPanel<WatchBrandPage> sortingPanel = mainWatchCo.menuBar.clickPopupMenuItem(luminox).sortingPanel;
+        int count = sortingPanel.getSortingItemsCount(analog);
+        WatchBrandPage watchBrandPage = sortingPanel.switchSortingItem(analog).finishSorting();
         int actualCount = watchBrandPage.getCountWatches();
 
         assertHelper.assertThatTrue(actualCount == count,
-                String.format("Sorting count of watches %s does not match %d, exists %d watch(es)", watchItem.getWatchBrand(), count, actualCount));
+                String.format("Sorting count of watches %s does not match %d, exists %d watch(es)", luminox.getWatchBrand(), count, actualCount));
     }
 }
