@@ -18,12 +18,12 @@ import static popo.flow.app.Constants.REG_EXP_NUMBER_BETWEEN_BRACKETS;
 @RequiredArgsConstructor
 public class SortingPanel<R extends WatchBrandPage> extends BasePage {
 
-    private final SelenideElement sortingSidebar = $(Locators.get("watch.sort")).waitUntil(exist, Waiters.EXIST_TIMEOUT);
+    private final SelenideElement sortingSidebar = $(Locators.get("brand.sort")).waitUntil(exist, Waiters.EXIST_TIMEOUT);
     @NonNull private R watchBrandPage;
 
     public SortingPanel switchSortingItem(SortingItem item) {
         sortingSidebar.find(Locators.getWithText(item.getSortingItem())).click();
-        $(Locators.get("watch.sortItems")).waitUntil(text(item.getSortingItem()), Waiters.EXIST_TIMEOUT);
+        $(Locators.get("brand.sortItems")).waitUntil(text(item.getSortingItem()), Waiters.EXIST_TIMEOUT);
         return this;
     }
 
