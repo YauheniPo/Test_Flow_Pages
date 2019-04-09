@@ -10,8 +10,7 @@ import static com.codeborne.selenide.Selenide.$;
 public class WatchBrandPage extends BasePage {
 
     public final SortingPanel<WatchBrandPage> sortingPanel = new SortingPanel<>(this);
-    private SelenideElement productsPanel = $(Locators.getByPartialClassTextOfElement(
-            Locators.LocatorElement.DIV, Locators.getLocator("brand.items"))).shouldBe(Condition.visible);
+    private SelenideElement productsPanel = $(Locators.get("brand.items")).shouldBe(Condition.visible);
 
     public int getCountItems() {
         return productsPanel.findAll(Locators.getByXpath(".//li")).size();

@@ -6,9 +6,7 @@ import com.codeborne.selenide.WebDriverRunner;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import popo.flow.framework.util.OSValidator;
 import popo.flow.framework.util.ResourcePropertiesManager;
 
 import java.util.Locale;
@@ -54,13 +52,8 @@ public final class Browser {
     }
 
     private static void windowMaximize() {
-        log.info(String.format("Initial window size: %s", getDriver().manage().window().getSize()));
-        if (OSValidator.isUnix()) {
-            Dimension d = new Dimension(1920, 1080);
-            getDriver().manage().window().setSize(d);
-        } else if (OSValidator.isWindows()) {
-            getDriver().manage().window().maximize();
-        }
+        getDriver().executeScript("if (window.screen) {window.moveTo(0, 0);window.resizeTo(window.screen.availWidth,window.screen.availHeight);};");
+        getDriver().manage().window().maximize();
         log.info(String.format("Final window size: %s", getDriver().manage().window().getSize()));
     }
 

@@ -9,12 +9,12 @@
         </classes>
     </test>
 
-    <!--<test name="EDGE" parallel="none" thread-count="5">-->
-        <!--<parameter name="browser" value="edge"/>-->
-        <!--<classes>-->
-            <!--<class name="popo.flow.app.test.TestWatchCoMainPage"/>-->
-        <!--</classes>-->
-    <!--</test>-->
+    <test name="EDGE" parallel="none" thread-count="5">
+        <parameter name="browser" value="edge"/>
+        <classes>
+            <class name="popo.flow.app.test.TestWatchCoMainPage"/>
+        </classes>
+    </test>
 
     <test name="CHROME" parallel="methods" thread-count="5">
         <parameter name="browser" value="chrome"/>
